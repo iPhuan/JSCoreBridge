@@ -66,10 +66,10 @@ jsCoreBridge.js的使用原则在于，保证你的html文件能够引用到。
 jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：
 
 * **`jsCoreBridge.version`** // 获取当前JSCoreBridge Web平台JS版本号<br />
-客户端JSCoreBridge框架对jsCoreBridge.js有最低版本要求，Pod到工程的jsCoreBridge.js相对于当前客户端jsCoreBridge框架都是最新的版本，可放心使用，如果你自行从其他途径下载jsCoreBridge.js，请保证该版本能够兼容客户端jsCoreBridge框架。
+> 客户端JSCoreBridge框架对jsCoreBridge.js有最低版本要求，Pod到工程的jsCoreBridge.js相对于当前客户端jsCoreBridge框架都是最新的版本，可放心使用，如果你自行从其他途径下载jsCoreBridge.js，请保证该版本能够兼容客户端jsCoreBridge框架。
 
 * **`jsCoreBridge.exec`** // 执行客户端对应插件方法<br />
-通过该方法可以告诉客户端JSCoreBridge框架通过对应插件的对应方法去执行相应的事情，代码示例如下：
+> 通过该方法可以告诉客户端JSCoreBridge框架通过对应插件的对应方法去执行相应的事情，代码示例如下：
 ```javascript
     var params = {title: 'JSCoreBridge Demo'};
 
@@ -80,26 +80,26 @@ jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用�
     }, 'JSCTestPlugin', 'changeNavTitle', [params]);
 ```
 
-> > * 第一个函数为成功回调，第二个函数为失败回调，通过res和err获取结果数据，当然如果你不想收到回调，这两个参数你可以传空，如果你不希望接收res和err结果数据，回调函数你也可以不用带参数；<br />
-> > * `JSCTestPlugin`为客户端对应的插件Plugin类名；<br />
-> > * `changeNavTitle`为JSCTestPlugin插件中对应的插件方法；<br />
-> > * 最后一个参数则为Web传给客户端的参数，通过数组的方式传递，至于数组里面传递什么样的数据，由开发者自行决定，当然该参数你也可以传空或者不传。<br />
+> > * 第一个函数为成功回调，第二个函数为失败回调，通过res和err获取结果数据，当然如果你不想收到回调，这两个参数你可以传空，如果你不希望接收res和err结果数据，回调函数你也可以不用带参数；
+> > * `JSCTestPlugin`为客户端对应的插件Plugin类名；
+> > * `changeNavTitle`为JSCTestPlugin插件中对应的插件方法；
+> > * 最后一个参数则为Web传给客户端的参数，通过数组的方式传递，至于数组里面传递什么样的数据，由开发者自行决定，当然该参数你也可以传空或者不传。
 
 * **`jsCoreBridge.execSync`** // 同步执行客户端对应插件方法<br />
-与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：
+> 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：
 ```javascript
     var version = jsCoreBridge.execSync('JSCTestPlugin', 'getAppVersionSync', null);
 ```
 
 * **`deviceready`** // JSCoreBridge已准备好监听事件<br />
-可通过`document.addEventListener('deviceready', onDeviceReady, false)`来监听JSCoreBridge准备完成。<br />
+> 可通过`document.addEventListener('deviceready', onDeviceReady, false)`来监听JSCoreBridge准备完成。<br />
 :warning: 注意：为了保证客户端插件方法能够正确执行，请保证在deviceready执行后调用jsCoreBridge对象的方法；
 
 * **`pause`** // 客户端已经进入后台监听事件<br />
-可通过`document.addEventListener('pause', onDeviceReady, false)`来监听客户端已经进入后台。
+> 可通过`document.addEventListener('pause', onDeviceReady, false)`来监听客户端已经进入后台。
 
 * **`resume`** // 客户端即将进入前台监听事件<br />
-可通过`document.addEventListener('resume', onDeviceReady, false)`来监听客户端即将进入前台。
+> 可通过`document.addEventListener('resume', onDeviceReady, false)`来监听客户端即将进入前台。
 
 
 
