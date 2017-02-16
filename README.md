@@ -22,29 +22,29 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 1. Web创建自定义scheme “`gap://ready`”，并响应链接跳转事件；
 2. Cordova通过WebView代理方法`webView:shouldStartLoadWithRequest:navigationType`截获该gap跳转
 3. Cordova通过WebView `stringByEvaluatingJavaScriptFromString`方法执行Cordova JS方法`nativeFetchMessages`获取Web当前的命令参数并转化为`CDVInvokedUrlCommand`对象；
-4. Cordova根据CDVInvokedUrlCommand对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
-5. Cordova执行完插件方法后如需给Web返回数据结果，则再次通过WebView `stringByEvaluatingJavaScriptFromString`方法执行Cordova JS方法`nativeCallback`，通过CDVInvokedUrlCommand的`callbackId`将结果发送给Web对应的回调。
+4. Cordova根据`CDVInvokedUrlCommand`对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
+5. Cordova执行完插件方法后如需给Web返回数据结果，则再次通过WebView `stringByEvaluatingJavaScriptFromString`方法执行Cordova JS方法`nativeCallback`，通过`CDVInvokedUrlCommand`的`callbackId`将结果发送给Web对应的回调。
 
-### SCoreBridge通信原理：<br />
+### JSCoreBridge通信原理：<br />
 
-不在使用传统的scheme链接跳转截取和stringByEvaluatingJavaScriptFromString执行JS的方法，通过iOS7新增的**JavaScriptCore.framework**来实现JS和Native之间的通信。
+不在使用传统的scheme链接跳转截取和`stringByEvaluatingJavaScriptFromString`执行JS的方法，通过iOS7新增的** `JavaScriptCore.framework` **来实现JS和Native之间的通信。
 
-1. Web调用jsCoreBridge.js的`exec`或者`execSync`方法直接将命令参数传给客户端；
+1. Web调用`jsCoreBridge.js`的`exec`或者`execSync`方法直接将命令参数传给客户端；
 2. JSCoreBridge将命令参数转化为`JSCInvokedPluginCommand`对象；
-3. JSCoreBridge根据JSCInvokedPluginCommand对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
-4. JSCoreBridge执行完插件方法后如需给Web返回数据结果，直接调用jsCoreBridge.js的`nativeCallback`方法，通过JSCInvokedPluginCommand的`callbackId`将结果发送给Web对应的回调。
+3. JSCoreBridge根据`JSCInvokedPluginCommand`对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
+4. JSCoreBridge执行完插件方法后如需给Web返回数据结果，直接调用`jsCoreBridge.js`的`nativeCallback`方法，通过`JSCInvokedPluginCommand`的`callbackId`将结果发送给Web对应的回调。
 
 
 如何获取JSCoreBridge
 -------------------------------------------------------------
 1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)
-2. 通过CocoaPods添加到工程：
-* 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：
+2. 通过CocoaPods添加到工程：<br />
+* 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：<br />
     `pod 'JSCoreBridge'`
-* 如果你想使用Lite版的JSCoreBridge，添加以下命令行到Podfile：
+* 如果你想使用Lite版的JSCoreBridge，添加以下命令行到Podfile：<br />
     `pod 'JSCoreBridge/JSCoreBridgeLite'`
 
-注：Lite版的JSCoreBridge将不使用config.xml进行功能选项配置，JSCoreBridgeLite仅仅实现了最基本的通信功能。
+注：Lite版的JSCoreBridge将不使用`config.xml`进行功能选项配置，JSCoreBridgeLite仅仅实现了最基本的通信功能。
   
 
 
