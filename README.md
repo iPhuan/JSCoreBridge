@@ -17,7 +17,7 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 
 通信原理
 -------------------------------------------------------------
-### Cordova通信原理：<br />
+### Cordova通信原理：
 
 1. Web创建自定义scheme “`gap://ready`”，并响应链接跳转事件；
 2. Cordova通过WebView代理方法`webView:shouldStartLoadWithRequest:navigationType`截获该gap跳转
@@ -25,7 +25,7 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 4. Cordova根据`CDVInvokedUrlCommand`对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
 5. Cordova执行完插件方法后如需给Web返回数据结果，则再次通过WebView `stringByEvaluatingJavaScriptFromString`方法执行Cordova JS方法`nativeCallback`，通过`CDVInvokedUrlCommand`的`callbackId`将结果发送给Web对应的回调。
 
-### JSCoreBridge通信原理：<br />
+### JSCoreBridge通信原理：
 
 不在使用传统的scheme链接跳转截取和`stringByEvaluatingJavaScriptFromString`执行JS的方法，通过iOS7新增的**`JavaScriptCore.framework`**来实现JS和Native之间的通信。
 
@@ -40,13 +40,13 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)
 2. 通过CocoaPods添加到工程：<br />
 
-> * 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：<br />
+> * 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：  
 
 ```ruby
     pod 'JSCoreBridge'
 ```
 
-> * 如果你想使用Lite版的JSCoreBridge，添加以下命令行到Podfile：<br />
+> * 如果你想使用Lite版的JSCoreBridge，添加以下命令行到Podfile：  
 
 ```ruby
     pod 'JSCoreBridge/JSCoreBridgeLite'
@@ -61,7 +61,7 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 
 JSCoreBridge Web平台
 -------------------------------------------------------------
-### jsCoreBridge.js存放说明：<br />
+### jsCoreBridge.js存放说明：  
 
 * jsCoreBridge.js本身在工程当中，如打开的html文件在bundle中，可直接引用，当然如果你的html文件在bundle的子目录下，你希望jsCoreBridge.js和你的网页目录在同一级，你也可以将jsCoreBridge.js拷贝到该同级目录；
 * 如果你的html文件存储在沙盒，你务必要把jsCoreBridge.js拷贝到沙盒；
@@ -69,14 +69,14 @@ JSCoreBridge Web平台
 jsCoreBridge.js的使用原则在于，保证你的html文件能够引用到。
 
 
-### jsCoreBridge.js接口说明：<br />
+### jsCoreBridge.js接口说明：
 
-jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：
+jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：  
 
-* **`jsCoreBridge.version`** // 获取当前JSCoreBridge Web平台JS版本号<br />
+* **`jsCoreBridge.version`** // 获取当前JSCoreBridge Web平台JS版本号  
 > 客户端JSCoreBridge框架对jsCoreBridge.js有最低版本要求，Pod到工程的jsCoreBridge.js相对于当前客户端jsCoreBridge框架都是最新的版本，可放心使用，如果你自行从其他途径下载jsCoreBridge.js，请保证该版本能够兼容客户端jsCoreBridge框架。
 
-* **`jsCoreBridge.exec`** // 执行客户端对应插件方法<br />
+* **`jsCoreBridge.exec`** // 执行客户端对应插件方法  
 > 通过该方法可以告诉客户端JSCoreBridge框架通过对应插件的对应方法去执行相应的事情，代码示例如下：
 
 ```javascript
@@ -94,30 +94,30 @@ jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用�
    > - `changeNavTitle`为JSCTestPlugin插件中对应的插件方法；
    > - 最后一个参数则为Web传给客户端的参数，通过数组的方式传递，至于数组里面传递什么样的数据，由开发者自行决定，当然该参数你也可以传空或者不传。
 
-* **`jsCoreBridge.execSync`** // 同步执行客户端对应插件方法<br />
-> > 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：
+* **`jsCoreBridge.execSync`** // 同步执行客户端对应插件方法  
+> 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：  
 
 ```javascript
     var version = jsCoreBridge.execSync('JSCTestPlugin', 'getAppVersionSync', null);
 ```
 
-* **`deviceready`** // JSCoreBridge已准备好监听事件<br />
-> > 可通过以下示例代码来监听JSCoreBridge准备完成：<br />
+* **`deviceready`** // JSCoreBridge已准备好监听事件  
+> 可通过以下示例代码来监听JSCoreBridge准备完成：  
 
 ```javascript
     document.addEventListener('deviceready', onDeviceReady, false)
 ```
 :warning: 注意：为了保证客户端插件方法能够正确执行，请保证在deviceready执行后调用jsCoreBridge对象的方法；
 
-* **`pause`** // 客户端已经进入后台监听事件<br />
-> > 可通过以下示例代码来监听客户端已经进入后台：
+* **`pause`** // 客户端已经进入后台监听事件  
+> 可通过以下示例代码来监听客户端已经进入后台：
 
 ```javascript
     document.addEventListener('pause', onPause, false)
 ```
 
-* **`resume`** // 客户端即将进入前台监听事件<br />
-> > 可通过以下示例代码来监听客户端即将进入前台：
+* **`resume`** // 客户端即将进入前台监听事件  
+> 可通过以下示例代码来监听客户端即将进入前台：
 
 ```javascript
     document.addEventListener('resume', onResume, false)
