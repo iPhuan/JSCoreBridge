@@ -96,6 +96,7 @@ jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用�
 
 * **`jsCoreBridge.execSync`** // 同步执行客户端对应插件方法  
 > 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：  
+> 
 
 ```javascript
     var version = jsCoreBridge.execSync('JSCTestPlugin', 'getAppVersionSync', null);
