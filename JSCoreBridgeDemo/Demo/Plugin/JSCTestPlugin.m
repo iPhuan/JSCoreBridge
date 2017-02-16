@@ -88,7 +88,7 @@
 
 - (void)p_sendEmailWithTitle:(NSString *)title content:(NSString *)content {
     if (![MFMailComposeViewController canSendMail]) {
-        [self alertWithTitle:@"无法发送邮件" message:@"您还未设置过邮箱账户，请先在设置中设置邮箱后再使用邮件功能。"];
+        [self popupAlertViewWithTitle:@"无法发送邮件" message:@"您还未设置过邮箱账户，请先在设置中设置邮箱后再使用邮件功能。"];
         // 使用backupCallbackId
         [self sendFailedResultWithResCode:RESCODE_FAIL resMsg:RESMSG_FAIL callBackId:self.backupCallbackId];
         return;

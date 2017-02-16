@@ -118,7 +118,7 @@
 
 #pragma mark - Other
 
-- (void)alertWithTitle:(NSString *)title message:(NSString *)message{
+- (void)popupAlertViewWithTitle:(NSString *)title message:(NSString *)message{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
     [alertController addAction:alertAction];

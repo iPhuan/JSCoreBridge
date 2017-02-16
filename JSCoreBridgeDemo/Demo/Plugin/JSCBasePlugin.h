@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, JSCParamsErrorType) {
 - (void)sendFailedResultWithResCode:(NSString *)resCode resMsg:(NSString *)resMsg callBackId:(NSString *)callbackId;
 - (void)sendPluginResultWithStatus:(JSCCommandStatus)commandStatus message:(NSDictionary *)message callbackId:(NSString*)callbackId;
 
-- (void)alertWithTitle:(NSString *)title message:(NSString *)message;
+- (void)popupAlertViewWithTitle:(NSString *)title message:(NSString *)message;
 
 
 
