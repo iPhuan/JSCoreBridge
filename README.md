@@ -87,20 +87,29 @@ jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用�
    > * 最后一个参数则为Web传给客户端的参数，通过数组的方式传递，至于数组里面传递什么样的数据，由开发者自行决定，当然该参数你也可以传空或者不传。
 
 * **`jsCoreBridge.execSync`** // 同步执行客户端对应插件方法<br />
-> 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：<br />
+> 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：
 ```javascript
-    var version = jsCoreBridge.execSync('JSCTestPlugin', 'getAppVersionSync', null);
+var version = jsCoreBridge.execSync('JSCTestPlugin', 'getAppVersionSync', null);
 ```
 
 * **`deviceready`** // JSCoreBridge已准备好监听事件<br />
-> 可通过`document.addEventListener('deviceready', onDeviceReady, false)`来监听JSCoreBridge准备完成。<br />
+> 可通过以下示例代码来监听JSCoreBridge准备完成。<br />
+```javascript
+document.addEventListener('deviceready', onDeviceReady, false)
+```
 :warning: 注意：为了保证客户端插件方法能够正确执行，请保证在deviceready执行后调用jsCoreBridge对象的方法；
 
 * **`pause`** // 客户端已经进入后台监听事件<br />
-> 可通过`document.addEventListener('pause', onDeviceReady, false)`来监听客户端已经进入后台。
+> 可通过以下示例代码来监听客户端已经进入后台。
+```javascript
+document.addEventListener('pause', onPause, false)
+```
 
 * **`resume`** // 客户端即将进入前台监听事件<br />
-> 可通过`document.addEventListener('resume', onDeviceReady, false)`来监听客户端即将进入前台。
+> 可通过以下示例代码来监听客户端即将进入前台。
+```javascript
+document.addEventListener('resume', onResume, false)
+```
 
 
 
