@@ -58,7 +58,7 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 
 使用说明
 =============================================================
-JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添加到工程，添加JSCoreBridge到工程后，简单配置config.xml和jsCoreBridge.js即可使用，如为手动添加，需添加`JavaScriptCore.framework`库。config.xml和jsCoreBridge.js的相关说明下文会做详细介绍。
+JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添加，加入JSCoreBridge后，简单配置config.xml和jsCoreBridge.js即可使用，如为手动添加，需添加`JavaScriptCore.framework`库。config.xml和jsCoreBridge.js的相关说明下文会做详细介绍。
 
 JSCoreBridge Web平台
 -------------------------------------------------------------
