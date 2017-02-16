@@ -71,7 +71,7 @@ jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用�
 
 * **`jsCoreBridge.exec`** // 执行客户端对应插件方法<br />
 > 通过该方法可以告诉客户端JSCoreBridge框架通过对应插件的对应方法去执行相应的事情，代码示例如下：
-```javascript
+```
     var params = {title: 'JSCoreBridge Demo'};
 
     jsCoreBridge.exec(function (res) {
