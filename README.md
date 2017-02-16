@@ -39,9 +39,10 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 -------------------------------------------------------------
 1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)
 2. 通过CocoaPods添加到工程：<br />
-* 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：<br />
+
+> * 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：<br />
     `pod 'JSCoreBridge'`
-* 如果你想使用Lite版的JSCoreBridge，添加以下命令行到Podfile：<br />
+> * 如果你想使用Lite版的JSCoreBridge，添加以下命令行到Podfile：<br />
     `pod 'JSCoreBridge/JSCoreBridgeLite'`
 
 注：Lite版的JSCoreBridge将不使用`config.xml`进行功能选项配置，JSCoreBridgeLite仅仅实现了最基本的通信功能。
