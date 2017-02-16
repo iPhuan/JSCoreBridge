@@ -80,10 +80,10 @@ jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用�
     }, 'JSCTestPlugin', 'changeNavTitle', [params]);
 ```
 
-  * 第一个函数为成功回调，第二个函数为失败回调，通过res和err获取结果数据，当然如果你不想收到回调，这两个参数你可以传空，如果你不希望接收res和err结果数据，回调函数你也可以不用带参数；<br />
-  * `JSCTestPlugin`为客户端对应的插件Plugin类名；<br />
-  * `changeNavTitle`为JSCTestPlugin插件中对应的插件方法；<br />
-  * 最后一个参数则为Web传给客户端的参数，通过数组的方式传递，至于数组里面传递什么样的数据，由开发者自行决定，当然该参数你也可以传空或者不传。<br />
+> > * 第一个函数为成功回调，第二个函数为失败回调，通过res和err获取结果数据，当然如果你不想收到回调，这两个参数你可以传空，如果你不希望接收res和err结果数据，回调函数你也可以不用带参数；<br />
+> > * `JSCTestPlugin`为客户端对应的插件Plugin类名；<br />
+> > * `changeNavTitle`为JSCTestPlugin插件中对应的插件方法；<br />
+> > * 最后一个参数则为Web传给客户端的参数，通过数组的方式传递，至于数组里面传递什么样的数据，由开发者自行决定，当然该参数你也可以传空或者不传。<br />
 
 * **`jsCoreBridge.execSync`** // 同步执行客户端对应插件方法<br />
 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：
