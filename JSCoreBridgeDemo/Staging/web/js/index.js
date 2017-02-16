@@ -22,7 +22,7 @@ var app = {
         var params = {title: 'JSCoreBridge Demo'};
         // 兼容cordova用法; 成功和失败函数可传空
         // 如果你希望在js加载后立即调用插件，请确保调用插件是在deviceready后执行，不要企望客户端对应插件方法会在jsCoreBridgeDidReady之前调用
-        cordova.exec(null, null, 'JSCTestPlugin', 'changeNavTitle', [params])
+        cordova.exec(null, null, 'JSCTestPlugin', 'changeNavTitle', [params]);
     },
 
     onPause: function () {
@@ -41,7 +41,7 @@ var app = {
                 app.alertMsg('改变标题成功！', res);
             }, function (err) {
                 app.alertMsg('改变标题失败！', err);
-            }, 'JSCTestPlugin', 'changeNavTitle', [params])
+            }, 'JSCTestPlugin', 'changeNavTitle', [params]);
         });
 
         document.querySelector('#sendEmail').onclick = (function () {
@@ -67,7 +67,7 @@ var app = {
                 }
             }, function (err) {
                 app.alertMsg('发送邮件失败！', err);
-            }, 'JSCTestPlugin', 'sendEmail', [params])
+            }, 'JSCTestPlugin', 'sendEmail', [params]);
         });
 
         document.querySelector('#getAppVersionSync').onclick = (function () {
