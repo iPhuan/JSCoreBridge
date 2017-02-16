@@ -1,0 +1,14 @@
+//
+//  JSCoreBridge-Prefix.pch
+//  JSCoreBridgeDemo
+//
+//  Created by iPhuan on 2017/2/14.
+//  Copyright © 2017年 iPhuan. All rights reserved.
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "JSCCONSTS.h"
+#endif
+
