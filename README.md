@@ -27,7 +27,7 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 
 ### JSCoreBridge通信原理：<br />
 
-不在使用传统的scheme链接跳转截取和`stringByEvaluatingJavaScriptFromString`执行JS的方法，通过iOS7新增的** `JavaScriptCore.framework` **来实现JS和Native之间的通信。
+不在使用传统的scheme链接跳转截取和`stringByEvaluatingJavaScriptFromString`执行JS的方法，通过iOS7新增的**`JavaScriptCore.framework`**来实现JS和Native之间的通信。
 
 1. Web调用`jsCoreBridge.js`的`exec`或者`execSync`方法直接将命令参数传给客户端；
 2. JSCoreBridge将命令参数转化为`JSCInvokedPluginCommand`对象；
@@ -40,7 +40,7 @@ JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的�
 1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)
 2. 通过CocoaPods添加到工程：<br />
 
-> * 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：<br />
+>    * 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：<br />
     `pod 'JSCoreBridge'`
 > * 如果你想使用Lite版的JSCoreBridge，添加以下命令行到Podfile：<br />
     `pod 'JSCoreBridge/JSCoreBridgeLite'`
