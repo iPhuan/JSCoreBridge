@@ -47,6 +47,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 
 > JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手。  
 
+<br />
 <a name="2">通信原理</a>
 -------------------------------------------------------------
 ### <a name="2.1">Cordova通信原理：</a>
@@ -57,6 +58,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 4. Cordova根据`CDVInvokedUrlCommand`对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
 5. Cordova执行完插件方法后如需给Web返回数据结果，则再次通过WebView`stringByEvaluatingJavaScriptFromString:`方法执行Cordova JS方法`nativeCallback`，通过`CDVInvokedUrlCommand`的`callbackId`作为标识将结果发送给Web对应的回调。
 
+<br />
 ### <a name="2.2">JSCoreBridge通信原理：</a>  
 
 不再使用传统的scheme链接跳转截取和`stringByEvaluatingJavaScriptFromString:`执行JS的方法，通过iOS7新增的**`JavaScriptCore.framework`**来实现JS和Native之间的通信。
@@ -66,7 +68,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 3. JSCoreBridge根据`JSCInvokedPluginCommand`对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
 4. JSCoreBridge执行完插件方法后如需给Web返回数据结果，直接调用`jsCoreBridge.js`的`nativeCallback`方法，通过`JSCInvokedPluginCommand`的`callbackId`作为标识将结果发送给Web对应的回调。
 
-
+<br />
 <a name="3">如何获取JSCoreBridge</a>  
 -------------------------------------------------------------
 1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)
@@ -87,7 +89,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 注：Lite版的JSCoreBridge将不使用`config.xml`进行功能选项配置，JSCoreBridgeLite仅仅实现了最基本的通信。
   
 
-
+<br />
 <a name="4">使用说明</a>  
 =============================================================
 JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添加，加入JSCoreBridge后，简单配置config.xml和jsCoreBridge.js即可使用，如框架为手动添加，需添加`JavaScriptCore.framework`库。  
@@ -96,6 +98,7 @@ JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添�
 
 [JSCoreBridge Demo](https://github.com/iPhuan/JSCoreBridge.git)中有JSCoreBridge的详细使用样例代码，可下载参考。
 
+<br />
 <a name="4.1">JSCoreBridge Web平台</a>  
 -------------------------------------------------------------
 ### <a name="4.1.1">jsCoreBridge.js存放说明：</a> 
@@ -178,7 +181,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 ```
 
 
-
+<br />
 <a name="4.2">JSCoreBridge Native平台</a>  
 -------------------------------------------------------------
 <a name="4.2.1"></a>  
@@ -441,7 +444,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 在返回成功和失败结果数据时建议开发者通过code和message的形式给Web返回结果信息，以便Web开发者能够通过code和message识别当前情况或者问题所在。
 
 
-
+<br />
 <a name="WebLoadOrder">网页加载回调执行顺序说明</a>
 -------------------------------------------------------------
 关于JSCoreBridge加载网页时，Web和Native对应回调方法的执行顺序，这里需要特别说明下：  
@@ -501,7 +504,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 
 开发者可参考以上两种情况的执行顺序来决定自己在开发中如何在各个回调中处理相应事情。  
 
-
+<br />
 <a name="4.4">Cordova用法兼容性</a>
 -------------------------------------------------------------
 JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留了其原始的使用方法：  
@@ -510,21 +513,21 @@ JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留�
 * 在Native平台，`config.xml`配置方式与Cordova的一致，只是删减了部分配置选项；Plugin插件方法的编写也保持与Cordova一致，新增同步插件方法，唯一的区别在于各个相关联的类名都对应修改成JSCoreBridge框架的类，并在实现上可能稍做修改。
 
 
-
+<br />
 :warning: <a name="5">风险声明</a>
 -------------------------------------------------------------
 * JSCoreBridge框架使用了开源类[UIWebView+TS_JavaScriptContext](https://github.com/TomSwift/UIWebView-TS_JavaScriptContext)，JSCoreBridge修改后的类为`UIWebView+JSCJavaScriptContext`，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
 
 * 本框架虽然已进行过多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，那么该风险需要您自行承担。同时也欢迎您给本人反馈在使用中遇到的问题和bug。  
 
-
+<br />
 =============================================================  
 
 <a name="6">开源说明</a>
 -------------------------------------------------------------
 JSCoreBridge框架是本人在深入了解[Apache Cordova](http://cordova.apache.org/)后在此基础上修改封装的，本着开源的思想，现上传至[GitHub](https://github.com/iPhuan/JSCoreBridge.git)，并提供CocoaPods支持，之后会一直跟进更新，如果您在使用本框架，欢迎及时反馈您在使用过程中遇到的各种问题和bug，也欢迎大家跟本人沟通和分享更多互联网技术。iPhuan更多开源资源将会不定期的更新至[iPhuanOpenSource](https://github.com/iPhuan/iPhuanOpenSource.git)  
 
-
+<br />
 <a name="ContactInfo">如何联系我</a>
 -------------------------------------------------------------  
 邮箱：iphuan@qq.com  
