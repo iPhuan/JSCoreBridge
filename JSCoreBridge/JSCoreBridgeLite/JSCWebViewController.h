@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
  5.preference('BackupWebStorage', 'TopActivityIndicator', 'ErrorUrl', 'OverrideUserAgent', 'AppendUserAgent', 'target-device', 'deployment-target', 'CordovaWebViewEngine', 'SuppressesLongPressGesture', and 'Suppresses3DTouchGesture')
  
  These options no longer need to be added:
- 1.widget('id', 'version', and etc)
+ 1.widget('id', 'version', 'defaultlocale', 'ios-CFBundleVersion', 'xmlns', and 'xmlns:cdv')
  2.name
  3.description
  4.author

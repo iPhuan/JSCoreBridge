@@ -51,7 +51,7 @@
 - (instancetype)initWithUrl:(NSString *)url {
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
-        _URL = [NSURL fileURLWithPath:url];
+        _URL = [NSURL URLWithString:url];
         
         // 关闭自动加载页面
         self.shouldAutoLoadURL = NO;

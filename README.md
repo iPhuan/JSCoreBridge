@@ -7,7 +7,7 @@
 
 JSCoreBridge
 =============================================================
-JSCoreBridge是基于iOS平台Apache Cordova修改的开源框架，Cordova的用处在于作为桥梁通过插件的方式实现了Web与Native之间的通信，而JSCoreBridge参考其进行删减修改（移除了开发者在平时用不上的类和方法），改写了其传统的通信机制，在保留了Cordova实用的功能前提下，精简优化了框架占用大小，并且省去了繁琐的工程设置选项，通过的新的实现方式大大提供了通信效率。JSCoreBridge开源框架力在为开发者提供更便捷的Hybird开发体验。
+JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改的开源框架，Cordova的用处在于作为桥梁通过插件的方式实现了Web与Native之间的通信，而JSCoreBridge参考其进行删减修改（移除了开发者在平时用不上的类和方法），改写了其传统的通信机制，在保留了Cordova实用的功能前提下，精简优化了框架占用大小，并且省去了繁琐的工程设置选项，通过的新的实现方式大大提供了通信效率。JSCoreBridge开源框架力在为开发者提供更便捷的Hybird开发体验。
 
 
 用途
@@ -72,7 +72,7 @@ jsCoreBridge.js的使用原则在于，保证你的html文件能够引用到。
 
 ### jsCoreBridge.js接口说明：
 
-jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：  
+jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova-ios/blob/master/CordovaLib/cordova.js)通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：  
 
 * **`jsCoreBridge.version`**  
 
@@ -140,8 +140,41 @@ jsCoreBridge.js对应于Cordova的cordova.js通过`jsCoreBridge`对象来调用�
 
 JSCoreBridge Native平台
 -------------------------------------------------------------
+### config.xml：  
+
+在Cordova中config.xml是框架功能选项的配置文件，包含工程的一些信息，插件白名单，Web页面访问白名单，WebView属性设置等。同样在JSCoreBridge中，我们将config.xml移植了过来，并对一些配置选项进行了删减，以便达到一个轻量级的JSCoreBridge框架。  
+
+config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不在使用config.xml文件来配置框架；当然你也可以通过设置`JSCWebViewController`类的`configEnabled`属性来关闭使用config.xml，以使用一个最轻量化的JSCoreBridge。  
+
+想了解config.xml文件如何配置，可进一步点击[这里](http://cordova.apache.org/docs/en/latest/config_ref/index.html)，到Cordova官方网站进行了解。当然对于一般的开发者来说，JSCoreBridge当中的config.xml样例已足够满足需求，你只需配置插件白名单即可，配置示例如下：  
+
+```SB
+    <feature name="JSCTestBasePlugin">
+    <param name="ios-package" value="JSCTestBasePlugin" />
+    <param name="onload" value="true" />
+    </feature>
+```  
+> 一般来说保持`feature`当中`name`的值和`param`当中`value`值一致，当然你也可以不一致，但必须保证`param`当中`value`值和对应的插件类名一致；
+> 如果希望插件在JSCoreBridge初始化时就加载，可以通过`<param name="onload" value="true" />`来设置，如果不需要，可以省去该行。  
 
 
-如需用到config.xml，请在`JSCoreBridge/optional`目录下将config.xml复制到其他目录并添加到工程使用；
+在JSCoreBridge中，以下配置选项目前暂未实现：  
+
+1. content
+2. access
+3. engine
+4. plugin
+5. preference中(`BackupWebStorage`， `TopActivityIndicator`，  `ErrorUrl`， `OverrideUserAgent`， `AppendUserAgent`， `target-device`， `deployment-target`， `CordovaWebViewEngine`， `SuppressesLongPressGesture`， `Suppresses3DTouchGesture`)
+
+在JSCoreBridge中，以下配置选项不再需要添加：  
+
+1. widget(`id`， `version`，`defaultlocale`，`ios-CFBundleVersion`，`xmlns`，`xmlns:cdv`)
+2. name
+3. description
+4. author  
+
+:warning: 如工程用到config.xml，请在`JSCoreBridge/optional`目录下将config.xml复制到其他目录并添加到工程使用；
+
+
 
 
