@@ -36,8 +36,8 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 * [开源说明](#6)
 * [如何联系我](#ContactInfo)  
 
-
-
+<br />
+<br />
 
 <a name="1">适用范围</a>
 -------------------------------------------------------------
