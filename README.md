@@ -516,7 +516,7 @@ JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留�
 <br />
 :warning: <a name="5">风险声明</a>
 -------------------------------------------------------------
-* JSCoreBridge框架使用了开源类[UIWebView+TS_JavaScriptContext](https://github.com/TomSwift/UIWebView-TS_JavaScriptContext)，JSCoreBridge修改后的类为`UIWebView+JSCJavaScriptContext`，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
+* JSCoreBridge框架使用了开源类[UIWebView+TS_JavaScriptContext](https://github.com/TomSwift/UIWebView-TS_JavaScriptContext)，JSCoreBridge修改后的类为[UIWebView+JSCJavaScriptContext](https://github.com/iPhuan/JSCoreBridge/blob/master/JSCoreBridge/JSCoreBridgeLite/UIWebView%2BJSCJavaScriptContext.m)，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
 
 * 本框架虽然已进行过多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，那么该风险需要您自行承担。同时也欢迎您给本人反馈在使用中遇到的问题和bug。  
 
