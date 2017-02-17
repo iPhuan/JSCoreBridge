@@ -22,7 +22,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
     * [JSCoreBridge Web平台](#4.1)
          * [jsCoreBridge.js存放说明](#4.1.1)
          * [jsCoreBridge.js接口说明](#4.1.2)
-    * [4.2 JSCoreBridge Native平台](#4.2)
+    * [JSCoreBridge Native平台](#4.2)
          * [config.xml](#4.2.1)
          * [JSCWebViewController](#JSCWebViewController)
          * [JSCBridgeDelegate](#JSCBridgeDelegate)
@@ -177,7 +177,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 <a name="4.2">JSCoreBridge Native平台</a>  
 -------------------------------------------------------------
 <a name="4.2.1"></a>  
-### [4.2.1 config.xml：](http://cordova.apache.org/docs/en/latest/config_ref/index.html)  
+### [config.xml：](http://cordova.apache.org/docs/en/latest/config_ref/index.html)  
 
 在Cordova中config.xml是框架功能选项的配置文件，包含工程的一些信息，插件白名单，Web页面访问白名单，WebView属性设置等。同样在JSCoreBridge中，我们将`config.xml`移植了过来，并对一些配置选项进行了删减，以便达到一个轻量级的JSCoreBridge框架。  
 
@@ -380,7 +380,7 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 
 
 <br />
-### <a name="4.2.7">其他框架类：：</a>
+### <a name="4.2.7">其他框架类：</a>
 对于框架其他的类，默认为私有状态，建议开发者不要随意调用，或者随意修改，在使用框架的过程中如遇任何问题和bug欢迎[联系本人](#ContactInfo)沟通商讨解决。  
 
 
