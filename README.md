@@ -129,7 +129,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 * **`resume`**  
 
-> 客户端即将进入前台监听事件。  
+> 客户端即将进入前台监听事件。 
 > 可通过以下示例代码来监听客户端即将进入前台：
 
 ```js
@@ -164,16 +164,65 @@ config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不�
 2. access
 3. engine
 4. plugin
-5. preference中(`BackupWebStorage`， `TopActivityIndicator`，  `ErrorUrl`， `OverrideUserAgent`， `AppendUserAgent`， `target-device`， `deployment-target`， `CordovaWebViewEngine`， `SuppressesLongPressGesture`， `Suppresses3DTouchGesture`)
+5. preference中 (`BackupWebStorage`， `TopActivityIndicator`，  `ErrorUrl`， `OverrideUserAgent`， `AppendUserAgent`， `target-device`， `deployment-target`， `CordovaWebViewEngine`， `SuppressesLongPressGesture`， `Suppresses3DTouchGesture`)
 
 在JSCoreBridge中，以下配置选项不再需要添加：  
 
-1. widget(`id`， `version`，`defaultlocale`，`ios-CFBundleVersion`，`xmlns`，`xmlns:cdv`)
+1. widget中 (`id`， `version`，`defaultlocale`，`ios-CFBundleVersion`，`xmlns`，`xmlns:cdv`)
 2. name
 3. description
 4. author  
 
 :warning: 如工程用到config.xml，请在`JSCoreBridge/optional`目录下将config.xml复制到其他目录并添加到工程使用；
+
+
+### JSCWebViewController：
+JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewController，可以直接使用，也可根据自己的需求来继承使用，其部分API说明如下：  
+
+* **`bridgeDelegate`**   
+
+> JSCoreBridge代理。可通过该对象执行相应代理方法，具体可参考JSCBridgeDelegate。  
+
+
+* **`configFilePath`**   
+
+> config.xml文件路径。默认从Bundle根目录获取，如果设置该属性，则从该路径获取，不支持网络地址。
+
+
+* **`configEnabled`**   
+
+> 是否开启config配置功能。默认开启，如需关闭，可设置为NO；当使用JSCoreBridgeLite时`configEnabled`属性不可设置，始终未关闭状态。
+
+
+* **`shouldAutoLoadURL`**   
+
+> 自动加载URL.默认自动加载通过`initWithUrl`初始化的URL，设置为NO关闭自动加载。  
+
+
+* **`- (instancetype)initWithUrl:(NSString *)url`**  
+
+> 通过字符串链接初始化URL。可在`JSCWebViewController`子类中重写该方法。  
+
+
+* **`(void)loadURL:(NSURL *)URL`**  
+* **`- (void)loadHTMLString:(NSString *)htmlString`**   
+
+> 通过调用以上两方法进行网页手动加载  
+
+
+* **`- (void)jsCoreBridgeWillReady:(UIWebView *)webView`**  
+* **`- (void)jsCoreBridgeDidReady:(UIWebView *)webView`**  
+
+> JSCoreBridge将要准备就绪和已准备就绪回调。分别在`deviceready`通知发送之前和之后调用，方便开发者在这两个时刻进行相应操作，可在`JSCWebViewController`子类中重写该方法。  
+
+
+:warning: **特别提示:**关于客户端Native及Web的相应方法的执行顺序请参考网页加载回调顺序说明
+
+
+
+
+
+
 
 
 

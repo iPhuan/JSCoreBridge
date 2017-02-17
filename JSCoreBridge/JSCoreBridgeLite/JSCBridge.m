@@ -91,8 +91,12 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
     // Initialize JSCManager
     Class managerClass = NSClassFromString(@"JSCManager");
     self.manager = [[managerClass alloc] initWithBridge:self];
-    if (![_manager enableManager]) {
-        self.manager = nil;
+    if (_manager == nil) {
+        _webViewController.configEnabled = NO;
+    }else{
+        if (![_manager enableManager]) {
+            self.manager = nil;
+        }
     }
 }
 
