@@ -132,7 +132,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 > 客户端即将进入前台监听事件。  
 > 可通过以下示例代码来监听客户端即将进入前台：
 
-```javascript
+```js
     document.addEventListener('resume', onResume, false)
 ```
 
@@ -148,7 +148,7 @@ config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不�
 
 想了解config.xml文件如何配置，可进一步点击[这里](http://cordova.apache.org/docs/en/latest/config_ref/index.html)，到Cordova官方网站进行了解。当然对于一般的开发者来说，JSCoreBridge当中的config.xml样例已足够满足需求，你只需配置插件白名单即可，配置示例如下：  
 
-```SB
+```xml
     <feature name="JSCTestBasePlugin">
     <param name="ios-package" value="JSCTestBasePlugin" />
     <param name="onload" value="true" />
