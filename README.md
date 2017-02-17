@@ -5,36 +5,38 @@
 # Copyright © 2017年 iPhuan. All rights reserved.
 -->
 
+JSCoreBridge
+=============================================================
+JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改的开源框架，Cordova的用处在于作为桥梁通过插件的方式实现了Web与Native之间的通信，而JSCoreBridge参考其进行删减修改（移除了开发者在平时用不上的类和方法），改写了其传统的通信机制，在保留了Cordova实用的功能前提下，精简优化了框架占用大小，并且省去了繁琐的工程设置选项，通过的新的实现方式大大提供了通信效率。JSCoreBridge开源框架力在为开发者提供更便捷的Hybird开发体验。  
+
+
+
 目录
 -------------------------------------------------------------
 * 适用范围
 * 通信原理
-*   Cordova通信原理
-*   JSCoreBridge通信原理
+    * Cordova通信原理
+    * JSCoreBridge通信原理
 * 如何获取JSCoreBridge
 * 使用说明
-*   JSCoreBridge Web平台
-*       jsCoreBridge.js存放说明
-*       jsCoreBridge.js接口说明
-*   JSCoreBridge Native平台
-*       config.xml
-*       JSCWebViewController
-*       JSCBridgeDelegate
-*       JSCPlugin
-*       JSCPluginResult
-*       JSCInvokedPluginCommand
-*       其他框架类
-*   网页加载回调执行顺序说明
-*   Cordova兼容性说明
+    * JSCoreBridge Web平台
+        * jsCoreBridge.js存放说明
+        * jsCoreBridge.js接口说明
+    * JSCoreBridge Native平台
+        * config.xml
+        * JSCWebViewController
+        * JSCBridgeDelegate
+        * JSCPlugin
+        * JSCPluginResult
+        * JSCInvokedPluginCommand
+        * 其他框架类
+    * 网页加载回调执行顺序说明
+    * Cordova兼容性说明
 * 风险声明
 * 开源说明
-* 如何联系我
+* 如何联系我  
 
 
-
-JSCoreBridge
-=============================================================
-JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改的开源框架，Cordova的用处在于作为桥梁通过插件的方式实现了Web与Native之间的通信，而JSCoreBridge参考其进行删减修改（移除了开发者在平时用不上的类和方法），改写了其传统的通信机制，在保留了Cordova实用的功能前提下，精简优化了框架占用大小，并且省去了繁琐的工程设置选项，通过的新的实现方式大大提供了通信效率。JSCoreBridge开源框架力在为开发者提供更便捷的Hybird开发体验。
 
 
 适用范围
