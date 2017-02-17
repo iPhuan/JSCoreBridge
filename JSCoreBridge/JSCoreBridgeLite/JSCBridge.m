@@ -175,8 +175,40 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
     [_webViewController jsCoreBridgeWebViewDidStartLoad:webView];
 }
 
+
+// If 'jsCoreBridge.js' is a direct reference, The execution order is as follows:
+
+// 'window.onload' --> 'jscWindowOnLoad' --> 'webViewDidFinishLoad:' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
+/*------------------------------------------------------------------------------------------------------*/
+
+// If 'jsCoreBridge.js' append to document by 'appendChild' or 'insertBefore' JS method, The execution order is as follows:
+
+// 'webViewDidFinishLoad:' --> 'window.onload' --> 'jscWindowOnLoad' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    JSCLog(@"webViewDidFinishLoad");
+    JSCLog(@"WebView loaded");
+    
+    self.context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    
+    
+    if ([self p_fireDeviceReadyEvent]){
+        [self p_defineExecuteCommandJSValue];
+        
+    // If 'jsCoreBridge.js' append to document by 'appendChild' or 'insertBefore' JS method.
+    // At this time, 'jsCoreBridge.js' is not loaded.
+    }else{
+        __weak __typeof(self) weakSelf = self;
+        _context[@"jscWindowOnLoad"] = ^{
+            JSCLog(@"Window loaded");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([weakSelf p_fireDeviceReadyEvent]) {
+                    [weakSelf p_defineExecuteCommandJSValue];
+                }
+            });
+        };
+        [_context evaluateScript:@"window.addEventListener(\"load\", jscWindowOnLoad, false)"];
+    }
+    
     [_webViewController jsCoreBridgeWebViewDidFinishLoad:_webViewController.webView];
 }
 
@@ -184,47 +216,6 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
     [_webViewController jsCoreBridgeWebView:webView didFailLoadWithError:error];
 }
 
-
-#pragma mark - JSCWebViewDelegate
-
-// If 'jsCoreBridge.js' is a direct reference, The execution order is as follows:
-
-// 'jsCoreBridgeWebView:didCreateJavaScriptContext:' --> 'window.onload' --> 'jscWindowOnLoad' --> 'webViewDidFinishLoad:' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
-/*------------------------------------------------------------------------------------------------------*/
-
-// If 'jsCoreBridge.js' append to document by 'appendChild' or 'insertBefore' JS method, The execution order is as follows:
-
-// 'jsCoreBridgeWebView:didCreateJavaScriptContext:' --> 'webViewDidFinishLoad:' --> 'window.onload' --> 'jscWindowOnLoad' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
-
-- (void)jsCoreBridgeWebView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*)context{
-    JSCLog(@"JSContext has created");
-    self.context = context;
-    
-    __weak __typeof(self) weakSelf = self;
-    _context[@"jscWindowOnLoad"] = ^{
-        JSCLog(@"window has on load");
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if ([weakSelf p_fireDeviceReadyEvent]) {
-                [weakSelf p_defineExecuteCommandJSValue];
-            }
-        });
-    };
-    [_context evaluateScript:@"window.addEventListener(\"load\", jscWindowOnLoad, false)"];
-    
-    _context[@"jscBridgeWillReady"] = ^{
-        JSCLog(@"JSCoreBridge will ready");
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.webViewController jsCoreBridgeWillReady:weakSelf.webViewController.webView];
-        });
-    };
-    
-    _context[@"jscBridgeDidReady"] = ^{
-        JSCLog(@"JSCoreBridge has ready");
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.webViewController jsCoreBridgeDidReady:weakSelf.webViewController.webView];
-        });
-    };
-}
 
 - (BOOL)p_fireDeviceReadyEvent{
     JSValue *jsCoreBridge = [_context evaluateScript:@"jsCoreBridge"];
@@ -234,6 +225,7 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
         NSString *versionStr = [version toString];
         BOOL isJsCoreBridgeAvailable = [versionStr compare:JSCOREBRIDGE_JS_VERSION_MIN_REQUIRED options:NSNumericSearch] != NSOrderedAscending;
         if (isJsCoreBridgeAvailable) {
+            [self p_defineJscBridgeReadyCallbackJSValue];
             [self p_fireDocumentEvent:@"deviceready"];
         }else{
             JSCLog(@"CRITICAL: For JSCoreBridge %@, 'jsCoreBridge.js' need to upgrade to at least %@ or greater. Your current version of 'jsCoreBridge.js' is %@.", JSC_VERSION, JSCOREBRIDGE_JS_VERSION_MIN_REQUIRED, versionStr);
@@ -244,8 +236,25 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
 }
 
 - (void)p_fireDocumentEvent:(NSString *)eventName{
-    JSCLog(@"fire '%@' event.", eventName);
+    JSCLog(@"Fire '%@' event.", eventName);
     [self.bridgeDelegate callScriptFunction:@"jsCoreBridge.fireDocumentEvent" withArguments:@[eventName]];
+}
+
+- (void)p_defineJscBridgeReadyCallbackJSValue {
+    __weak __typeof(self) weakSelf = self;
+    _context[@"jscBridgeWillReady"] = ^{
+        JSCLog(@"JSCoreBridge will be ready");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.webViewController jsCoreBridgeWillReady:weakSelf.webViewController.webView];
+        });
+    };
+    
+    _context[@"jscBridgeDidReady"] = ^{
+        JSCLog(@"JSCoreBridge is ready");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.webViewController jsCoreBridgeDidReady:weakSelf.webViewController.webView];
+        });
+    };
 }
 
 - (void)p_defineExecuteCommandJSValue {

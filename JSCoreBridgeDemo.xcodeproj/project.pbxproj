@@ -37,7 +37,6 @@
 		E5DCA2581E5162F3008A76F4 /* JSCPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA23B1E5162F3008A76F4 /* JSCPlugin.m */; };
 		E5DCA2591E5162F3008A76F4 /* JSCPluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA23D1E5162F3008A76F4 /* JSCPluginResult.m */; };
 		E5DCA25A1E5162F3008A76F4 /* JSCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA23F1E5162F3008A76F4 /* JSCWebViewController.m */; };
-		E5DCA25B1E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2411E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m */; };
 		E5DCA2681E516316008A76F4 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = E5DCA2651E516316008A76F4 /* config.xml */; };
 		E5DCA26B1E51632E008A76F4 /* web in Resources */ = {isa = PBXBuildFile; fileRef = E5DCA26A1E51632E008A76F4 /* web */; };
 /* End PBXBuildFile section */
@@ -120,8 +119,6 @@
 		E5DCA23D1E5162F3008A76F4 /* JSCPluginResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCPluginResult.m; sourceTree = "<group>"; };
 		E5DCA23E1E5162F3008A76F4 /* JSCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCWebViewController.h; sourceTree = "<group>"; };
 		E5DCA23F1E5162F3008A76F4 /* JSCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCWebViewController.m; sourceTree = "<group>"; };
-		E5DCA2401E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+JSCJavaScriptContext.h"; sourceTree = "<group>"; };
-		E5DCA2411E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+JSCJavaScriptContext.m"; sourceTree = "<group>"; };
 		E5DCA2651E516316008A76F4 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		E5DCA26A1E51632E008A76F4 /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = web; sourceTree = "<group>"; };
 		E5DCA26C1E51673D008A76F4 /* JSCCONSTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCCONSTS.h; sourceTree = "<group>"; };
@@ -315,8 +312,6 @@
 				E5DCA2371E5162F3008A76F4 /* JSCManagerProtocol.h */,
 				E5DCA2381E5162F3008A76F4 /* JSCObjcMsgSend.h */,
 				E5DCA2391E5162F3008A76F4 /* JSCObjcMsgSend.m */,
-				E5DCA2401E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.h */,
-				E5DCA2411E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m */,
 			);
 			path = JSCoreBridgeLite;
 			sourceTree = "<group>";
@@ -481,7 +476,6 @@
 				E5C33B361E4DC62500736171 /* ViewController.m in Sources */,
 				E50690D41E52F31E0043B55F /* JSCBasePlugin.m in Sources */,
 				E5DC97141E57315C00CF62AB /* JSCConfig.m in Sources */,
-				E5DCA25B1E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m in Sources */,
 				E5DCA2581E5162F3008A76F4 /* JSCPlugin.m in Sources */,
 				E5DCA25A1E5162F3008A76F4 /* JSCWebViewController.m in Sources */,
 				E5DC97151E57315C00CF62AB /* JSCManager.m in Sources */,

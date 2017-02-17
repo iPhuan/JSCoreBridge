@@ -7,16 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UIWebView+JSCJavaScriptContext.h"
+#import <UIKit/UIKit.h>
 #import "JSCBridgeDelegate.h"
 
 @class JSCWebViewController;
 @class JSCPlugin;
+@class JSContext;
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSCBridge : NSObject <JSCWebViewDelegate>
+@interface JSCBridge : NSObject <UIWebViewDelegate>
 @property (nonatomic, readonly, strong) JSContext *context;
 @property (nonatomic, readonly, weak) UIWebView *webView;
 @property (nonatomic, readonly, strong) id <JSCBridgeDelegate> bridgeDelegate;
