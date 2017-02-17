@@ -175,9 +175,8 @@ config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不�
 
 :warning: 如工程用到config.xml，请在`JSCoreBridge/optional`目录下将config.xml复制到其他目录并添加到工程使用；
 
-
-<a name="JSCWebViewController"></a>  
-### JSCWebViewController：
+ 
+### <a name="JSCWebViewController">JSCWebViewController：</a> 
 JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewController，可以直接使用，也可根据自己的需求来继承使用，其部分API说明如下：  
 
 * **`bridgeDelegate`**   
@@ -221,7 +220,7 @@ JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewControll
 
 
 
-### JSCBridgeDelegate：<a name="JSCBridgeDelegate">JSCBridgeDelegate</a>
+### <a name="JSCBridgeDelegate">JSCBridgeDelegate</a>
 JSCBridgeDelegate是JSCoreBridge的代理，可通过该代理向Web发送数据结果，执行JS等方法。该代理作为[JSCWebViewController](#JSCWebViewController)和[JSCPlugin](#JSCPlugin)的属性来使用。
 
 * **`- (instancetype)initWithUrl:(NSString *)url`**  
@@ -229,8 +228,8 @@ JSCBridgeDelegate是JSCoreBridge的代理，可通过该代理向Web发送数据
 > 通过字符串链接初始化URL。可在`JSCWebViewController`子类中重写该方法。  
 
 
-<a name="JSCPlugin"></a>
-### JSCPlugin：
+### <a name="JSCPlugin">JSCPlugin：</a>
+
 
 
 
