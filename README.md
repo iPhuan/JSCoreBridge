@@ -76,12 +76,12 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 * **`jsCoreBridge.version`**  
 
-> 获取当前JSCoreBridge Web平台JS版本号。
+> 获取当前JSCoreBridge Web平台JS版本号。<br />
 > 客户端JSCoreBridge框架对jsCoreBridge.js有最低版本要求，Pod到工程的jsCoreBridge.js相对于当前客户端jsCoreBridge框架都是最新的版本，可放心使用，如果你自行从其他途径下载jsCoreBridge.js，请保证该版本能够兼容客户端jsCoreBridge框架。
 
 * **`jsCoreBridge.exec`**  
 
-> 执行客户端对应插件方法。
+> 执行客户端对应插件方法。<br />
 > 通过该方法可以告诉客户端JSCoreBridge框架通过对应插件的对应方法去执行相应的事情，代码示例如下：
 
 ```javascript
@@ -101,7 +101,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 * **`jsCoreBridge.execSync`**  
 
-> 同步执行客户端对应插件方法。  
+> 同步执行客户端对应插件方法。<br />  
 > 与exec接口不同的是该方法为同步操作，所有没有成功与失败回调函数，其代码示例如下：  
 
 ```javascript
@@ -110,7 +110,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 * **`deviceready`**  
 
-> JSCoreBridge运行环境已准备好监听事件。  
+> JSCoreBridge运行环境已准备好监听事件。<br />  
 > 可通过以下示例代码来监听JSCoreBridge准备完成：  
 
 ```javascript
@@ -120,7 +120,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 * **`pause`**  
 
-> 客户端已经进入后台监听事件。  
+> 客户端已经进入后台监听事件。<br />  
 > 可通过以下示例代码来监听客户端已经进入后台：
 
 ```javascript
@@ -129,7 +129,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 * **`resume`**  
 
-> 客户端即将进入前台监听事件。 
+> 客户端即将进入前台监听事件。<br /> 
 > 可通过以下示例代码来监听客户端即将进入前台：
 
 ```js
@@ -216,7 +216,7 @@ JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewControll
 > JSCoreBridge将要准备就绪和已准备就绪回调。分别在`deviceready`通知发送之前和之后调用，方便开发者在这两个时刻进行相应操作，可在`JSCWebViewController`子类中重写该方法。  
 
 
-:warning: **特别提示:**关于客户端Native及Web的相应方法的执行顺序请参考网页加载回调顺序说明
+:warning: **特别提示：**关于客户端Native及Web的相应方法的执行顺序请参考网页加载回调顺序说明
 
 
 
