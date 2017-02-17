@@ -211,19 +211,19 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
     };
     [_context evaluateScript:@"window.addEventListener(\"load\", jscWindowOnLoad, false)"];
     
-//    _context[@"jscBridgeWillReady"] = ^{
-//        JSCLog(@"JSCoreBridge will ready");
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [weakSelf.webViewController jsCoreBridgeWillReady:weakSelf.webViewController.webView];
-//        });
-//    };
-//    
-//    _context[@"jscBridgeDidReady"] = ^{
-//        JSCLog(@"JSCoreBridge has ready");
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [weakSelf.webViewController jsCoreBridgeDidReady:weakSelf.webViewController.webView];
-//        });
-//    };
+    _context[@"jscBridgeWillReady"] = ^{
+        JSCLog(@"JSCoreBridge will ready");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.webViewController jsCoreBridgeWillReady:weakSelf.webViewController.webView];
+        });
+    };
+    
+    _context[@"jscBridgeDidReady"] = ^{
+        JSCLog(@"JSCoreBridge has ready");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.webViewController jsCoreBridgeDidReady:weakSelf.webViewController.webView];
+        });
+    };
 }
 
 - (BOOL)p_fireDeviceReadyEvent{
@@ -234,9 +234,7 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
         NSString *versionStr = [version toString];
         BOOL isJsCoreBridgeAvailable = [versionStr compare:JSCOREBRIDGE_JS_VERSION_MIN_REQUIRED options:NSNumericSearch] != NSOrderedAscending;
         if (isJsCoreBridgeAvailable) {
-            [self.webViewController jsCoreBridgeWillReady:self.webViewController.webView];
             [self p_fireDocumentEvent:@"deviceready"];
-            [self.webViewController jsCoreBridgeDidReady:self.webViewController.webView];
         }else{
             JSCLog(@"CRITICAL: For JSCoreBridge %@, 'jsCoreBridge.js' need to upgrade to at least %@ or greater. Your current version of 'jsCoreBridge.js' is %@.", JSC_VERSION, JSCOREBRIDGE_JS_VERSION_MIN_REQUIRED, versionStr);
         }
