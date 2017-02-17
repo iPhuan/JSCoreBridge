@@ -394,13 +394,13 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 ### <a name="4.2.8">自定义错误信息：</a>
 JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web返回对应的code码和错误信息：  
 
-* 插件无法找到时返回错误信息字典:  
+* 插件无法找到时返回错误信息字典:   
 
 ```objective-c
     @{@"resCode": @"4001", @"resMsg": @"ERROR: Plugin 'PluginName' not found, or is not a JSCPlugin. Check your plugin mapping in config.xml."}
 ```  
 
-< 出现此种情况原因可能是Web传错了插件名，或者客户端没有对应的插件，或者是使用了`config.xml`但是插件白名单当中并没有添加该插件。  
+> 出现此种情况原因可能是Web传错了插件名，或者客户端没有对应的插件，或者是使用了`config.xml`但是插件白名单当中并没有添加该插件。  
 
 
 * 插件无法调用时返回错误信息字典:  
@@ -409,7 +409,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
     @{@"resCode": @"4002", @"resMsg": @"ERROR: Plugin 'PluginName' can not be called, it is not allowed."}
 ```  
 
-< 出现此种情况原因在于插件方法`canCallPlugin`的返回值为NO。  
+> 出现此种情况原因在于插件方法`canCallPlugin`的返回值为NO。  
 
 
 * 插件方法无法找到时返回错误信息字典:  
@@ -418,7 +418,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
     @{@"resCode": @"4003", @"resMsg": @"ERROR: Method 'MethodName' not defined in Plugin 'PluginName'."}
 ```  
 
-< 出现此种情况原因可能是Web传错了插件方法名，或者客户端并没有对应的插件方法。  
+> 出现此种情况原因可能是Web传错了插件方法名，或者客户端并没有对应的插件方法。  
 
 <br />
 开发者可以通过定义以下宏来自定义JSCoreBridge给Web返回的错误信息的Key和Value值，代码示例：  
