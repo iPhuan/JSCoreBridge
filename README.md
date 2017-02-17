@@ -13,33 +13,33 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 
 目录
 -------------------------------------------------------------
-* 适用范围
-* 通信原理
-    * Cordova通信原理
-    * JSCoreBridge通信原理
-* 如何获取JSCoreBridge
-* 使用说明
-    * JSCoreBridge Web平台
-         * jsCoreBridge.js存放说明
-         * jsCoreBridge.js接口说明
-    * JSCoreBridge Native平台
-         * config.xml
-         * JSCWebViewController
-         * JSCBridgeDelegate
-         * JSCPlugin
-         * JSCPluginResult
-         * JSCInvokedPluginCommand
-         * 其他框架类
-    * 网页加载回调执行顺序说明
-    * Cordova兼容性说明
-* 风险声明
-* 开源说明
-* 如何联系我  
+* [适用范围](#1)
+* [通信原理](#2)
+    * [Cordova通信原理](#)
+    * [JSCoreBridge通信原理](#)
+* [如何获取JSCoreBridge](#)
+* [使用说明](#)
+    * [JSCoreBridge Web平台](#)
+         * [jsCoreBridge.js存放说明](#)
+         * [jsCoreBridge.js接口说明](#)
+    * [JSCoreBridge Native平台](#)
+         * [config.xml](#)
+         * [JSCWebViewController](#)
+         * [JSCBridgeDelegate](#)
+         * [JSCPlugin](#)
+         * [JSCPluginResult](#)
+         * [JSCInvokedPluginCommand](#)
+         * [其他框架类](#)
+    * [网页加载回调执行顺序说明](#)
+    * [Cordova兼容性说明](#)
+* [风险声明](#)
+* [开源说明](#)
+* [如何联系我](#)  
 
 
 
 
-适用范围
+<a name="1">适用范围</a>
 -------------------------------------------------------------
 * 适用于Hybird开发者，希望通过JSCoreBridge框架实现客户端Web与Native之间的交互与通信。
 * 适用于已经在使用Cordova框架并且考虑更换Cordova框架的开发者。  
