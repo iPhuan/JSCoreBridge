@@ -30,7 +30,6 @@
 - (IBAction)onJsCoreBridgeDemoBtn:(id)sender {
     NSString *bundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *htmlPath = [NSString stringWithFormat:@"%@/%@",bundlePath,@"web/index.html"];
-    htmlPath = @"https://commonwappre.10101111.com/join?key=bjhKRzlQd0FIL2RRektQbVMxYlpQUDVPNzlyQk1RSXVVZVRuYVV3QWFEcW1PMm51bXBlVkxvcUNzOXRwYjBjL09PMlFoUlBnL2JidkowTkx6dnBxcGVwdU1CdGdQWGE0cnRodng5WnBBd1k9";
     JSCTestWebViewController *VC = [[JSCTestWebViewController alloc] initWithUrl:htmlPath];
     [self.navigationController pushViewController:VC animated:YES];
 }

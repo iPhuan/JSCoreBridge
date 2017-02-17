@@ -13,7 +13,8 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 适用范围
 -------------------------------------------------------------
 * 适用于Hybird开发者，希望通过JSCoreBridge框架实现客户端Web与Native之间的交互与通信。
-* 适用于已经在使用Cordova框架并且考虑更换Cordova框架的开发者（JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手）
+* 适用于已经在使用Cordova框架并且考虑更换Cordova框架的开发者  
+> JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手）
 
 通信原理
 -------------------------------------------------------------
@@ -417,21 +418,21 @@ Cordova兼容性说明
 -------------------------------------------------------------
 JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留了其原始的使用方法：  
 
-* 在Web平台，依然可以通过`cordova.exec(successFuction, failFuntion, 'pluginName', 'methodName', [params])`调用，同时新增jsCoreBridge对象调用的方式，新增`jsCoreBridge.execSync`同步方法。  
-* 在Native平台，`config.xml`配置方式与Cordova的一致，只是删减了部分配置选项；Plugin插件方法的编写也保持与Cordova一致，新增同步插件方法，唯一的区别在于各个相关联的类名都对应修改JSCoreBridge框架的类，并在实现上可能稍做修改。
+* 在Web平台，依然可以通过`cordova.exec(successFuction, failFuntion, 'pluginName', 'methodName', [params])`方式调用，同时新增jsCoreBridge对象调用的方式，新增`jsCoreBridge.execSync`同步方法。  
+* 在Native平台，`config.xml`配置方式与Cordova的一致，只是删减了部分配置选项；Plugin插件方法的编写也保持与Cordova一致，新增同步插件方法，唯一的区别在于各个相关联的类名都对应修改成JSCoreBridge框架的类，并在实现上可能稍做修改。
 
 
 
 :warning: 风险声明
 -------------------------------------------------------------
-* JSCoreBridge框架使用开源类[UIWebView+TS_JavaScriptContext](https://github.com/TomSwift/UIWebView-TS_JavaScriptContext)，JSCoreBridge修改后的类为`UIWebView+JSCJavaScriptContext`，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
+* JSCoreBridge框架使用了开源类[UIWebView+TS_JavaScriptContext](https://github.com/TomSwift/UIWebView-TS_JavaScriptContext)，JSCoreBridge修改后的类为`UIWebView+JSCJavaScriptContext`，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
 
-* 本框架虽然已进行各多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，那么该风险您需要自行承担。同事也欢迎您给本人反馈在使用中遇到的问题和bug。  
+* 本框架虽然已进行过多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，那么该风险需要您自行承担。同时也欢迎您给本人反馈在使用中遇到的问题和bug。  
 
 
 开源说明
 =============================================================
-本框架是本人在深入了解[Apache Cordova](http://cordova.apache.org/)后在此基础上修改封装的，本着开源的思想，现上传至[GitHub](https://github.com/iPhuan/JSCoreBridge.git)，并提供CocoaPods支持，之后会一直跟进更新，如果您在使用本框架，欢迎及时反馈您在使用过程中遇到的各种问题和bug，也欢迎大家跟本人沟通和分享更多互联网技术。更多开源资源将会不定期的更新至[iPhuanOpenSource](https://github.com/iPhuan/iPhuanOpenSource.git)  
+JSCoreBridge框架是本人在深入了解[Apache Cordova](http://cordova.apache.org/)后在此基础上修改封装的，本着开源的思想，现上传至[GitHub](https://github.com/iPhuan/JSCoreBridge.git)，并提供CocoaPods支持，之后会一直跟进更新，如果您在使用本框架，欢迎及时反馈您在使用过程中遇到的各种问题和bug，也欢迎大家跟本人沟通和分享更多互联网技术。iPhuan更多开源资源将会不定期的更新至[iPhuanOpenSource](https://github.com/iPhuan/iPhuanOpenSource.git)  
 
 
 <a name="ContactInfo">如何联系我</a>
