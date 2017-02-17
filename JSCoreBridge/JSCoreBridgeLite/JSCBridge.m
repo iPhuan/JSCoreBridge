@@ -189,12 +189,12 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
 
 // If 'jsCoreBridge.js' is a direct reference, The execution order is as follows:
 
-// 'didCreateJavaScriptContext' --> 'window.onload' --> 'jscWindowOnLoad' --> 'webViewDidFinishLoad' --> 'jsCoreBridgeWillReady' --> 'deviceready' --> 'jsCoreBridgeDidReady'
+// 'jsCoreBridgeWebView:didCreateJavaScriptContext:' --> 'window.onload' --> 'jscWindowOnLoad' --> 'webViewDidFinishLoad:' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
 /*------------------------------------------------------------------------------------------------------*/
 
 // If 'jsCoreBridge.js' append to document by 'appendChild' or 'insertBefore' JS method, The execution order is as follows:
 
-// 'didCreateJavaScriptContext' --> 'webViewDidFinishLoad' --> 'window.onload' --> 'jscWindowOnLoad' --> 'jsCoreBridgeWillReady' --> 'deviceready' --> 'jsCoreBridgeDidReady'
+// 'jsCoreBridgeWebView:didCreateJavaScriptContext:' --> 'webViewDidFinishLoad:' --> 'window.onload' --> 'jscWindowOnLoad' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
 
 - (void)jsCoreBridgeWebView:(UIWebView *)webView didCreateJavaScriptContext:(JSContext*)context{
     JSCLog(@"JSContext has created");

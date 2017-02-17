@@ -57,6 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)jsCoreBridgeWebViewDidFinishLoad:(UIWebView *)webView;
 - (void)jsCoreBridgeWebView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
 
+
 // override these methods if you need to do something when jsCoreBridge call 'deviceready'
 - (void)jsCoreBridgeWillReady:(UIWebView *)webView;
 - (void)jsCoreBridgeDidReady:(UIWebView *)webView;
