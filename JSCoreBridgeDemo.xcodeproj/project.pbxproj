@@ -22,6 +22,13 @@
 		E5C33B981E4DC74200736171 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C33B971E4DC74200736171 /* JavaScriptCore.framework */; };
 		E5C33B9A1E4DC78200736171 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C33B991E4DC78200736171 /* UIKit.framework */; };
 		E5C33B9C1E4DC7C700736171 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C33B9B1E4DC7C700736171 /* Foundation.framework */; };
+		E5DC96F71E5721AC00CF62AB /* JSCConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC96E91E5721AC00CF62AB /* JSCConfigParser.m */; };
+		E5DC96F81E5721AC00CF62AB /* JSCTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC96EB1E5721AC00CF62AB /* JSCTimer.m */; };
+		E5DC96F91E5721AC00CF62AB /* JSCWhitelist.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC96ED1E5721AC00CF62AB /* JSCWhitelist.m */; };
+		E5DC96FA1E5721AC00CF62AB /* NSDictionary+JSCPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC96EF1E5721AC00CF62AB /* NSDictionary+JSCPreferences.m */; };
+		E5DC96FB1E5721AC00CF62AB /* JSCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC96F11E5721AC00CF62AB /* JSCConfig.m */; };
+		E5DC96FC1E5721AC00CF62AB /* JSCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC96F31E5721AC00CF62AB /* JSCManager.m */; };
+		E5DC96FD1E5721AC00CF62AB /* JSCPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC96F51E5721AC00CF62AB /* JSCPrint.m */; };
 		E5DCA2531E5162F3008A76F4 /* jscorebridge.js in Resources */ = {isa = PBXBuildFile; fileRef = E5DCA22D1E5162F3008A76F4 /* jscorebridge.js */; };
 		E5DCA2541E5162F3008A76F4 /* JSCBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2301E5162F3008A76F4 /* JSCBridge.m */; };
 		E5DCA2551E5162F3008A76F4 /* JSCBridgeDelegateImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2331E5162F3008A76F4 /* JSCBridgeDelegateImpl.m */; };
@@ -31,13 +38,6 @@
 		E5DCA2591E5162F3008A76F4 /* JSCPluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA23D1E5162F3008A76F4 /* JSCPluginResult.m */; };
 		E5DCA25A1E5162F3008A76F4 /* JSCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA23F1E5162F3008A76F4 /* JSCWebViewController.m */; };
 		E5DCA25B1E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2411E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m */; };
-		E5DCA25D1E5162F3008A76F4 /* JSCConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2461E5162F3008A76F4 /* JSCConfigParser.m */; };
-		E5DCA25E1E5162F3008A76F4 /* JSCTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2481E5162F3008A76F4 /* JSCTimer.m */; };
-		E5DCA25F1E5162F3008A76F4 /* JSCWhitelist.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA24A1E5162F3008A76F4 /* JSCWhitelist.m */; };
-		E5DCA2601E5162F3008A76F4 /* NSDictionary+JSCPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA24C1E5162F3008A76F4 /* NSDictionary+JSCPreferences.m */; };
-		E5DCA2611E5162F3008A76F4 /* JSCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA24E1E5162F3008A76F4 /* JSCConfig.m */; };
-		E5DCA2621E5162F3008A76F4 /* JSCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2501E5162F3008A76F4 /* JSCManager.m */; };
-		E5DCA2631E5162F3008A76F4 /* JSCPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DCA2521E5162F3008A76F4 /* JSCPrint.m */; };
 		E5DCA2681E516316008A76F4 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = E5DCA2651E516316008A76F4 /* config.xml */; };
 		E5DCA26B1E51632E008A76F4 /* web in Resources */ = {isa = PBXBuildFile; fileRef = E5DCA26A1E51632E008A76F4 /* web */; };
 /* End PBXBuildFile section */
@@ -87,6 +87,20 @@
 		E5C33B971E4DC74200736171 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E5C33B991E4DC78200736171 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5C33B9B1E4DC7C700736171 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E5DC96E81E5721AC00CF62AB /* JSCConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCConfigParser.h; sourceTree = "<group>"; };
+		E5DC96E91E5721AC00CF62AB /* JSCConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCConfigParser.m; sourceTree = "<group>"; };
+		E5DC96EA1E5721AC00CF62AB /* JSCTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCTimer.h; sourceTree = "<group>"; };
+		E5DC96EB1E5721AC00CF62AB /* JSCTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCTimer.m; sourceTree = "<group>"; };
+		E5DC96EC1E5721AC00CF62AB /* JSCWhitelist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCWhitelist.h; sourceTree = "<group>"; };
+		E5DC96ED1E5721AC00CF62AB /* JSCWhitelist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCWhitelist.m; sourceTree = "<group>"; };
+		E5DC96EE1E5721AC00CF62AB /* NSDictionary+JSCPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSCPreferences.h"; sourceTree = "<group>"; };
+		E5DC96EF1E5721AC00CF62AB /* NSDictionary+JSCPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSCPreferences.m"; sourceTree = "<group>"; };
+		E5DC96F01E5721AC00CF62AB /* JSCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCConfig.h; sourceTree = "<group>"; };
+		E5DC96F11E5721AC00CF62AB /* JSCConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCConfig.m; sourceTree = "<group>"; };
+		E5DC96F21E5721AC00CF62AB /* JSCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCManager.h; sourceTree = "<group>"; };
+		E5DC96F31E5721AC00CF62AB /* JSCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCManager.m; sourceTree = "<group>"; };
+		E5DC96F41E5721AC00CF62AB /* JSCPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCPrint.h; sourceTree = "<group>"; };
+		E5DC96F51E5721AC00CF62AB /* JSCPrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCPrint.m; sourceTree = "<group>"; };
 		E5DCA22D1E5162F3008A76F4 /* jscorebridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jscorebridge.js; sourceTree = "<group>"; };
 		E5DCA22E1E5162F3008A76F4 /* JSCAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCAvailability.h; sourceTree = "<group>"; };
 		E5DCA22F1E5162F3008A76F4 /* JSCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCBridge.h; sourceTree = "<group>"; };
@@ -108,20 +122,6 @@
 		E5DCA23F1E5162F3008A76F4 /* JSCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCWebViewController.m; sourceTree = "<group>"; };
 		E5DCA2401E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+JSCJavaScriptContext.h"; sourceTree = "<group>"; };
 		E5DCA2411E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+JSCJavaScriptContext.m"; sourceTree = "<group>"; };
-		E5DCA2451E5162F3008A76F4 /* JSCConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCConfigParser.h; sourceTree = "<group>"; };
-		E5DCA2461E5162F3008A76F4 /* JSCConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCConfigParser.m; sourceTree = "<group>"; };
-		E5DCA2471E5162F3008A76F4 /* JSCTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCTimer.h; sourceTree = "<group>"; };
-		E5DCA2481E5162F3008A76F4 /* JSCTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCTimer.m; sourceTree = "<group>"; };
-		E5DCA2491E5162F3008A76F4 /* JSCWhitelist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCWhitelist.h; sourceTree = "<group>"; };
-		E5DCA24A1E5162F3008A76F4 /* JSCWhitelist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCWhitelist.m; sourceTree = "<group>"; };
-		E5DCA24B1E5162F3008A76F4 /* NSDictionary+JSCPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSCPreferences.h"; sourceTree = "<group>"; };
-		E5DCA24C1E5162F3008A76F4 /* NSDictionary+JSCPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSCPreferences.m"; sourceTree = "<group>"; };
-		E5DCA24D1E5162F3008A76F4 /* JSCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCConfig.h; sourceTree = "<group>"; };
-		E5DCA24E1E5162F3008A76F4 /* JSCConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCConfig.m; sourceTree = "<group>"; };
-		E5DCA24F1E5162F3008A76F4 /* JSCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCManager.h; sourceTree = "<group>"; };
-		E5DCA2501E5162F3008A76F4 /* JSCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCManager.m; sourceTree = "<group>"; };
-		E5DCA2511E5162F3008A76F4 /* JSCPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCPrint.h; sourceTree = "<group>"; };
-		E5DCA2521E5162F3008A76F4 /* JSCPrint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCPrint.m; sourceTree = "<group>"; };
 		E5DCA2651E516316008A76F4 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		E5DCA26A1E51632E008A76F4 /* web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = web; sourceTree = "<group>"; };
 		E5DCA26C1E51673D008A76F4 /* JSCCONSTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCCONSTS.h; sourceTree = "<group>"; };
@@ -255,10 +255,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E5DC96E51E5721AC00CF62AB /* Optional */ = {
+			isa = PBXGroup;
+			children = (
+				E5DC96F41E5721AC00CF62AB /* JSCPrint.h */,
+				E5DC96F51E5721AC00CF62AB /* JSCPrint.m */,
+				E5DC96F01E5721AC00CF62AB /* JSCConfig.h */,
+				E5DC96F11E5721AC00CF62AB /* JSCConfig.m */,
+				E5DC96F21E5721AC00CF62AB /* JSCManager.h */,
+				E5DC96F31E5721AC00CF62AB /* JSCManager.m */,
+				E5DC96E71E5721AC00CF62AB /* CordovaSource */,
+			);
+			path = Optional;
+			sourceTree = "<group>";
+		};
+		E5DC96E71E5721AC00CF62AB /* CordovaSource */ = {
+			isa = PBXGroup;
+			children = (
+				E5DC96EA1E5721AC00CF62AB /* JSCTimer.h */,
+				E5DC96EB1E5721AC00CF62AB /* JSCTimer.m */,
+				E5DC96EC1E5721AC00CF62AB /* JSCWhitelist.h */,
+				E5DC96ED1E5721AC00CF62AB /* JSCWhitelist.m */,
+				E5DC96E81E5721AC00CF62AB /* JSCConfigParser.h */,
+				E5DC96E91E5721AC00CF62AB /* JSCConfigParser.m */,
+				E5DC96EE1E5721AC00CF62AB /* NSDictionary+JSCPreferences.h */,
+				E5DC96EF1E5721AC00CF62AB /* NSDictionary+JSCPreferences.m */,
+			);
+			path = CordovaSource;
+			sourceTree = "<group>";
+		};
 		E5DCA22A1E5162F3008A76F4 /* JSCoreBridge */ = {
 			isa = PBXGroup;
 			children = (
-				E5DCA2421E5162F3008A76F4 /* Optional */,
+				E5DC96E51E5721AC00CF62AB /* Optional */,
 				E5DCA22B1E5162F3008A76F4 /* JSCoreBridgeLite */,
 			);
 			path = JSCoreBridge;
@@ -298,36 +327,6 @@
 				E5DCA22D1E5162F3008A76F4 /* jscorebridge.js */,
 			);
 			path = JS;
-			sourceTree = "<group>";
-		};
-		E5DCA2421E5162F3008A76F4 /* Optional */ = {
-			isa = PBXGroup;
-			children = (
-				E5DCA2511E5162F3008A76F4 /* JSCPrint.h */,
-				E5DCA2521E5162F3008A76F4 /* JSCPrint.m */,
-				E5DCA24D1E5162F3008A76F4 /* JSCConfig.h */,
-				E5DCA24E1E5162F3008A76F4 /* JSCConfig.m */,
-				E5DCA24F1E5162F3008A76F4 /* JSCManager.h */,
-				E5DCA2501E5162F3008A76F4 /* JSCManager.m */,
-				E5DCA2441E5162F3008A76F4 /* CordovaSource */,
-			);
-			name = Optional;
-			path = optional;
-			sourceTree = "<group>";
-		};
-		E5DCA2441E5162F3008A76F4 /* CordovaSource */ = {
-			isa = PBXGroup;
-			children = (
-				E5DCA2471E5162F3008A76F4 /* JSCTimer.h */,
-				E5DCA2481E5162F3008A76F4 /* JSCTimer.m */,
-				E5DCA2491E5162F3008A76F4 /* JSCWhitelist.h */,
-				E5DCA24A1E5162F3008A76F4 /* JSCWhitelist.m */,
-				E5DCA2451E5162F3008A76F4 /* JSCConfigParser.h */,
-				E5DCA2461E5162F3008A76F4 /* JSCConfigParser.m */,
-				E5DCA24B1E5162F3008A76F4 /* NSDictionary+JSCPreferences.h */,
-				E5DCA24C1E5162F3008A76F4 /* NSDictionary+JSCPreferences.m */,
-			);
-			path = CordovaSource;
 			sourceTree = "<group>";
 		};
 		E5DCA2641E516316008A76F4 /* Staging */ = {
@@ -479,25 +478,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5DCA2611E5162F3008A76F4 /* JSCConfig.m in Sources */,
 				E5C33B361E4DC62500736171 /* ViewController.m in Sources */,
 				E50690D41E52F31E0043B55F /* JSCBasePlugin.m in Sources */,
-				E5DCA2631E5162F3008A76F4 /* JSCPrint.m in Sources */,
+				E5DC96FB1E5721AC00CF62AB /* JSCConfig.m in Sources */,
 				E5DCA25B1E5162F3008A76F4 /* UIWebView+JSCJavaScriptContext.m in Sources */,
-				E5DCA25E1E5162F3008A76F4 /* JSCTimer.m in Sources */,
 				E5DCA2581E5162F3008A76F4 /* JSCPlugin.m in Sources */,
-				E5DCA25D1E5162F3008A76F4 /* JSCConfigParser.m in Sources */,
 				E5DCA25A1E5162F3008A76F4 /* JSCWebViewController.m in Sources */,
-				E5DCA25F1E5162F3008A76F4 /* JSCWhitelist.m in Sources */,
+				E5DC96FC1E5721AC00CF62AB /* JSCManager.m in Sources */,
+				E5DC96F71E5721AC00CF62AB /* JSCConfigParser.m in Sources */,
+				E5DC96F81E5721AC00CF62AB /* JSCTimer.m in Sources */,
 				E5DCA2591E5162F3008A76F4 /* JSCPluginResult.m in Sources */,
 				E56603211E50655D0048039A /* JSCTestWebViewController.m in Sources */,
 				E5DCA2561E5162F3008A76F4 /* JSCInvokedPluginCommand.m in Sources */,
 				E5DCA2551E5162F3008A76F4 /* JSCBridgeDelegateImpl.m in Sources */,
+				E5DC96FD1E5721AC00CF62AB /* JSCPrint.m in Sources */,
 				E5C33B331E4DC62500736171 /* AppDelegate.m in Sources */,
+				E5DC96FA1E5721AC00CF62AB /* NSDictionary+JSCPreferences.m in Sources */,
 				E5DCA2571E5162F3008A76F4 /* JSCObjcMsgSend.m in Sources */,
-				E5DCA2621E5162F3008A76F4 /* JSCManager.m in Sources */,
+				E5DC96F91E5721AC00CF62AB /* JSCWhitelist.m in Sources */,
 				E5DCA2541E5162F3008A76F4 /* JSCBridge.m in Sources */,
-				E5DCA2601E5162F3008A76F4 /* NSDictionary+JSCPreferences.m in Sources */,
 				E56603261E50663B0048039A /* JSCTestPlugin.m in Sources */,
 				E5C33B301E4DC62500736171 /* main.m in Sources */,
 			);
