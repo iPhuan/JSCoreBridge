@@ -182,7 +182,7 @@ config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不�
 3. [description](http://cordova.apache.org/docs/en/latest/config_ref/index.html#description)
 4. [author](http://cordova.apache.org/docs/en/latest/config_ref/index.html#author)  
 
-:warning: 如工程用到`config.xml`，请在`JSCoreBridge/optional`目录下将`config.xml`复制到其他目录并添加到工程使用；
+:warning: 如工程用到`config.xml`，请在`JSCoreBridge/Optional`目录下将`config.xml`复制到其他目录并添加到工程使用；
 
 
 

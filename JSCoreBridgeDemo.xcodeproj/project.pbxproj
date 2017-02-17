@@ -258,7 +258,7 @@
 		E5DCA22A1E5162F3008A76F4 /* JSCoreBridge */ = {
 			isa = PBXGroup;
 			children = (
-				E5DCA2421E5162F3008A76F4 /* optional */,
+				E5DCA2421E5162F3008A76F4 /* Optional */,
 				E5DCA22B1E5162F3008A76F4 /* JSCoreBridgeLite */,
 			);
 			path = JSCoreBridge;
@@ -300,7 +300,7 @@
 			path = JS;
 			sourceTree = "<group>";
 		};
-		E5DCA2421E5162F3008A76F4 /* optional */ = {
+		E5DCA2421E5162F3008A76F4 /* Optional */ = {
 			isa = PBXGroup;
 			children = (
 				E5DCA2511E5162F3008A76F4 /* JSCPrint.h */,
@@ -311,6 +311,7 @@
 				E5DCA2501E5162F3008A76F4 /* JSCManager.m */,
 				E5DCA2441E5162F3008A76F4 /* CordovaSource */,
 			);
+			name = Optional;
 			path = optional;
 			sourceTree = "<group>";
 		};
