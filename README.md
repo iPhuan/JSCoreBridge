@@ -13,16 +13,16 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 适用范围
 -------------------------------------------------------------
 * 适用于Hybird开发者，希望通过JSCoreBridge框架实现客户端Web与Native之间的交互与通信。
-* 适用于已经在使用Cordova框架并且考虑更换Cordova框架的开发者  
+* 适用于已经在使用Cordova框架并且考虑更换Cordova框架的开发者。  
 
-> JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手  
+> JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手。  
 
 通信原理
 -------------------------------------------------------------
 ### Cordova通信原理：
 
 1. Web创建自定义scheme “`gap://ready`”，并响应链接跳转事件；
-2. Cordova通过WebView代理方法`webView:shouldStartLoadWithRequest:navigationType:`截获该gap跳转
+2. Cordova通过WebView代理方法`webView:shouldStartLoadWithRequest:navigationType:`截获该gap跳转；
 3. Cordova通过WebView`stringByEvaluatingJavaScriptFromString:`方法执行Cordova JS方法`nativeFetchMessages`获取Web当前的命令参数并转化为`CDVInvokedUrlCommand`对象；
 4. Cordova根据`CDVInvokedUrlCommand`对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
 5. Cordova执行完插件方法后如需给Web返回数据结果，则再次通过WebView`stringByEvaluatingJavaScriptFromString:`方法执行Cordova JS方法`nativeCallback`，通过`CDVInvokedUrlCommand`的`callbackId`作为标识将结果发送给Web对应的回调。
