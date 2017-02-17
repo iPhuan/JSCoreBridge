@@ -20,16 +20,16 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 * 如何获取JSCoreBridge
 * 使用说明
     * JSCoreBridge Web平台
-        * jsCoreBridge.js存放说明
-        * jsCoreBridge.js接口说明
+         * jsCoreBridge.js存放说明
+         * jsCoreBridge.js接口说明
     * JSCoreBridge Native平台
-        * config.xml
-        * JSCWebViewController
-        * JSCBridgeDelegate
-        * JSCPlugin
-        * JSCPluginResult
-        * JSCInvokedPluginCommand
-        * 其他框架类
+         * config.xml
+         * JSCWebViewController
+         * JSCBridgeDelegate
+         * JSCPlugin
+         * JSCPluginResult
+         * JSCInvokedPluginCommand
+         * 其他框架类
     * 网页加载回调执行顺序说明
     * Cordova兼容性说明
 * 风险声明

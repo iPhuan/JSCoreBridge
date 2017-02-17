@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget>
+<!--    <feature name="JSCTestBasePlugin">-->
+<!--        <param name="ios-package" value="JSCTestBasePlugin" />-->
+<!--        <param name="onload" value="true" />-->
+<!--    </feature>-->
+<!--    <feature name="JSCTestPlugin">-->
+<!--        <param name="ios-package" value="JSCTestPlugin" />-->
+<!--    </feature>-->
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+</widget>
