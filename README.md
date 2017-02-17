@@ -15,7 +15,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 * 适用于Hybird开发者，希望通过JSCoreBridge框架实现客户端Web与Native之间的交互与通信。
 * 适用于已经在使用Cordova框架并且考虑更换Cordova框架的开发者  
 
-> JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手）
+> JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手  
 
 通信原理
 -------------------------------------------------------------
