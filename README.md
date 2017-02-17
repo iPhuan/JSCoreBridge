@@ -385,7 +385,7 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 
 
 
-<a name="WebLoadOrder">网页加载回调执行顺序说明：</a>
+<a name="WebLoadOrder">网页加载回调执行顺序说明</a>
 -------------------------------------------------------------
 关于JSCoreBridge加载网页时，Web和Native对应回调方法的执行顺序，这里需要特别说明下：  
 
@@ -445,7 +445,7 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 开发者可参考以上两种情况的执行顺序来决定自己在开发中如何在各个回调中处理相应事情。  
 
 
-<a name="4.4">Cordova用法兼容性：</a>
+<a name="4.4">Cordova用法兼容性</a>
 -------------------------------------------------------------
 JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留了其原始的使用方法：  
 
