@@ -29,7 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
  2.access
  3.engine
  4.plugin
- 5.preference('BackupWebStorage', 'TopActivityIndicator', 'ErrorUrl', 'OverrideUserAgent', 'AppendUserAgent', 'target-device', 'deployment-target', 'CordovaWebViewEngine', 'SuppressesLongPressGesture', and 'Suppresses3DTouchGesture')
+ 5.variable
+ 6.preference('BackupWebStorage', 'TopActivityIndicator', 'ErrorUrl', 'OverrideUserAgent', 'AppendUserAgent', 'target-device', 'deployment-target', 'CordovaWebViewEngine', 'SuppressesLongPressGesture', and 'Suppresses3DTouchGesture')
  
  These options no longer need to be added:
  1.widget('id', 'version', 'defaultlocale', 'ios-CFBundleVersion', 'xmlns', and 'xmlns:cdv')

@@ -60,6 +60,8 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 =============================================================
 JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添加，加入JSCoreBridge后，简单配置config.xml和jsCoreBridge.js即可使用，如为手动添加，需添加`JavaScriptCore.framework`库。config.xml和jsCoreBridge.js的相关说明下文会做详细介绍。
 
+[JSCoreBridge Demo](https://github.com/iPhuan/JSCoreBridge.git)中有JSCoreBridge的详细使用样例代码，可下载参考使用。
+
 JSCoreBridge Web平台
 -------------------------------------------------------------
 ### jsCoreBridge.js存放说明：  
@@ -69,7 +71,7 @@ JSCoreBridge Web平台
 * 如果你的网页在远程网站上，那么你同样需要将jsCoreBridge.js放到你的远程网站上；
 jsCoreBridge.js的使用原则在于，保证你的html文件能够引用到。
 
-
+<br />
 ### jsCoreBridge.js接口说明：
 
 jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova-ios/blob/master/CordovaLib/cordova.js)通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：  
@@ -116,7 +118,9 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 ```javascript
     document.addEventListener('deviceready', onDeviceReady, false)
 ```
-:warning: 注意：为了保证客户端插件方法能够正确执行，请在deviceready执行后调用jsCoreBridge对象的方法；
+:warning: 注意：为了保证客户端插件方法能够正确执行，请在`deviceready`执行后调用jsCoreBridge对象的方法；如果你在`deviceready`回调中调用`jsCoreBridge.exec`，不要企望客户端对应插件方法会在`jsCoreBridgeDidReady:`之前调用，`jsCoreBridge.exec`为异步操作，除非你使用`jsCoreBridge.execSync`方法。
+
+<br />
 
 * **`pause`**  
 
@@ -140,13 +144,14 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 JSCoreBridge Native平台
 -------------------------------------------------------------
-### config.xml：  
+### [config.xml：](http://cordova.apache.org/docs/en/latest/config_ref/index.html)  
 
 在Cordova中config.xml是框架功能选项的配置文件，包含工程的一些信息，插件白名单，Web页面访问白名单，WebView属性设置等。同样在JSCoreBridge中，我们将config.xml移植了过来，并对一些配置选项进行了删减，以便达到一个轻量级的JSCoreBridge框架。  
 
-config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不在使用config.xml文件来配置框架；当然你也可以通过设置`JSCWebViewController`类的`configEnabled`属性来关闭使用config.xml，以使用一个最轻量化的JSCoreBridge。  
+config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不在使用config.xml文件来配置框架；当然你也可以通过设置[JSCWebViewController](#JSCWebViewController)类的`configEnabled`属性来关闭使用config.xml，以使用一个最轻量化的JSCoreBridge。  
 
-想了解config.xml文件如何配置，可进一步点击[这里](http://cordova.apache.org/docs/en/latest/config_ref/index.html)，到Cordova官方网站进行了解。当然对于一般的开发者来说，JSCoreBridge当中的config.xml样例已足够满足需求，你只需配置插件白名单即可，配置示例如下：  
+想了解config.xml文件如何配置，可进一步点击[这里](http://cordova.apache.org/docs/en/latest/config_ref/index.html)，到Cordova官方网站进行了解。  
+当然对于一般的开发者来说，JSCoreBridge当中的config.xml样例已足够满足需求，你只需配置插件白名单即可，配置示例如下：  
 
 ```xml
     <feature name="JSCTestBasePlugin">
@@ -160,23 +165,24 @@ config.xml文件并不是必须的，当你使用`JSCoreBridgeLite`时，将不�
 
 在JSCoreBridge中，以下配置选项目前暂未实现：  
 
-1. content
-2. access
-3. engine
-4. plugin
-5. preference中 (`BackupWebStorage`， `TopActivityIndicator`，  `ErrorUrl`， `OverrideUserAgent`， `AppendUserAgent`， `target-device`， `deployment-target`， `CordovaWebViewEngine`， `SuppressesLongPressGesture`， `Suppresses3DTouchGesture`)
+1. [content](http://cordova.apache.org/docs/en/latest/config_ref/index.html#content)
+2. [access](http://cordova.apache.org/docs/en/latest/config_ref/index.html#access)
+3. [engine](http://cordova.apache.org/docs/en/latest/config_ref/index.html#engine)
+4. [plugin](http://cordova.apache.org/docs/en/latest/config_ref/index.html#plugin)
+5. [variable](http://cordova.apache.org/docs/en/latest/config_ref/index.html#variable)
+6. [preference](http://cordova.apache.org/docs/en/latest/config_ref/index.html#preference)中 (`BackupWebStorage`， `TopActivityIndicator`，  `ErrorUrl`， `OverrideUserAgent`， `AppendUserAgent`， `target-device`， `deployment-target`， `CordovaWebViewEngine`， `SuppressesLongPressGesture`， `Suppresses3DTouchGesture`)
 
 在JSCoreBridge中，以下配置选项不再需要添加：  
 
-1. widget中 (`id`， `version`，`defaultlocale`，`ios-CFBundleVersion`，`xmlns`，`xmlns:cdv`)
-2. name
-3. description
-4. author  
+1. [widget](http://cordova.apache.org/docs/en/latest/config_ref/index.html#widget)中 (`id`， `version`，`defaultlocale`，`ios-CFBundleVersion`，`xmlns`，`xmlns:cdv`)
+2. [name](http://cordova.apache.org/docs/en/latest/config_ref/index.html#name)
+3. [description](http://cordova.apache.org/docs/en/latest/config_ref/index.html#description)
+4. [author](http://cordova.apache.org/docs/en/latest/config_ref/index.html#author)  
 
 :warning: 如工程用到`config.xml`，请在`JSCoreBridge/optional`目录下将`config.xml`复制到其他目录并添加到工程使用；
 
 
- 
+<br />
 ### <a name="JSCWebViewController">JSCWebViewController：</a> 
 JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewController，可以直接使用，也可根据自己的需求来继承使用，其部分API说明如下：  
 
@@ -192,15 +198,17 @@ JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewControll
 
 * **`configEnabled`**   
 
-> 是否开启config配置功能。默认开启，如需关闭，可设置为NO；当使用JSCoreBridgeLite时`configEnabled`属性不可设置，始终未关闭状态。
+> 是否开启config配置功能。默认开启，如需关闭，可设置为NO；当使用JSCoreBridgeLite时`configEnabled`属性不可设置，始终为关闭状态。
 
 
 * **`shouldAutoLoadURL`**   
 
-> 自动加载URL.默认自动加载通过`initWithUrl`初始化的URL，设置为NO关闭自动加载。  
+> 是否自动加载URL。默认自动加载通过`initWithUrl:`初始化的URL，设置为NO关闭自动加载。  
 
 
+```objective-c
 * **`- (instancetype)initWithUrl:(NSString *)url`**  
+```
 
 > 通过字符串链接初始化URL。可在`JSCWebViewController`子类中重写该方法。  
 
@@ -214,19 +222,19 @@ JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewControll
 * **`- (void)jsCoreBridgeWillReady:(UIWebView *)webView`**  
 * **`- (void)jsCoreBridgeDidReady:(UIWebView *)webView`**  
 
-> JSCoreBridge将要准备就绪和已准备就绪回调。分别在`deviceready`通知发送之前和之后调用，方便开发者在这两个时刻进行相应操作，可在`JSCWebViewController`子类中重写该方法。  
+> JSCoreBridge将要准备就绪和已准备就绪回调。分别在`deviceready`通知发送之前和之后调用，方便开发者在这两个时刻进行相应操作，可在[JSCWebViewController](#JSCWebViewController)子类中重写该方法使用。  
 
 
-:warning: **特别提示：**关于客户端Native及Web的相应方法的执行顺序请参考[网页加载回调执行顺序说明](#WebLoadOrder)。  
+:warning: **特别提示：**关于客户端Native及Web的相应回调方法的执行顺序请参考[网页加载回调执行顺序说明](#WebLoadOrder)。  
 
 
-
-### <a name="JSCBridgeDelegate">JSCBridgeDelegate</a>
-JSCBridgeDelegate是JSCoreBridge的代理，可通过该代理向Web发送数据结果，执行JS等方法。该代理作为[JSCWebViewController](#JSCWebViewController)和[JSCPlugin](#JSCPlugin)的属性来使用。
+<br />
+### <a name="JSCBridgeDelegate">JSCBridgeDelegate：</a>
+JSCBridgeDelegate是JSCoreBridge的代理，可通过该代理向Web发送结果数据，执行JS等方法。该代理作为[JSCWebViewController](#JSCWebViewController)和[JSCPlugin](#JSCPlugin)的属性来使用。
 
 * **`- (void)registerPlugin:(JSCPlugin *)plugin withPluginName:(NSString *)pluginName`**  
 
-> 将已有的插件通过类名注册到插件白名单当中。如果使用`config.xml`，那么JSCoreBridge将只会识别`config.xml`配置好的插件白名单，不在白名单范围内的的插件将不予加载使用，可通过该方法进行插件白名单注册。  
+> 将已有的插件通过类名注册到插件白名单当中。如果使用`config.xml`，那么JSCoreBridge将只会识别`config.xml`配置好的插件白名单，不在白名单范围内的的插件将不予加载使用，可通过该方法将插件注册到白名单当中去。  
 
 
 * **`- (nullable __kindof JSCPlugin *)getPluginInstance:(NSString *)pluginName`**  
@@ -236,7 +244,7 @@ JSCBridgeDelegate是JSCoreBridge的代理，可通过该代理向Web发送数据
 
 * **`- (void)sendPluginResult:(JSCPluginResult *)result forCallbackId:(NSString *)callbackId`**  
 
-> 向Web发送结果数据。将结果数据以[JSCPluginResult](#JSCPluginResult)对象实例进行封装，并通过回调`callbackId`发送给Web。代码实例如下：  
+> 向Web发送结果数据。将结果数据以[JSCPluginResult](#JSCPluginResult)对象实例进行封装，并以`callbackId`作为回调标识发送给Web。代码实例如下：  
 
 ```objective-c
     NSDictionary *message = @{@"resCode":@"0", @"resMsg":@"OK"};
@@ -256,7 +264,7 @@ JSCBridgeDelegate是JSCoreBridge的代理，可通过该代理向Web发送数据
     [self.bridgeDelegate callScriptFunction:@"jsCoreBridge.fireDocumentEvent" withArguments:@[@"deviceready"]];
 ```  
   
-> jsCoreBridge必须为Window的属性。
+> 其中`jsCoreBridge`必须为Window的属性。
 
 
 * **`- (void)onMainThreadEvaluateScript:(NSString *)script`**  
@@ -272,9 +280,9 @@ JSCBridgeDelegate是JSCoreBridge的代理，可通过该代理向Web发送数据
 
 
 
-
+<br />
 ### <a name="JSCPlugin">JSCPlugin：</a>
-JSCPlugin极为我们刚刚一直说的插件，这是一个基类，开发者需根据需求来分类建立多个插件，而这些插件都应当要继承于JSCPlugin来使用，才能保障插件的正常执行。  
+JSCPlugin即为我们刚刚一直说的插件，这是一个基类，开发者需根据需求来分类建立多个插件，而这些插件都应当要继承于JSCPlugin来使用，才能保障插件的正常执行。  
 JSCPlugin插件方法的声明示例如下：  
 
 ```objective-c
@@ -310,7 +318,7 @@ JSCPlugin的部分API说明如下：
 > JSCoreBridge调用插件方法时，先通过该方法进行验证，如果返回YES，则可正常调用插件，如返回NO，则无法调用。开发者可通过该方法进行一些权限的条件设置。  
 
 
-
+<br />
 ### <a name="JSCPluginResult">JSCPluginResult：</a>
 JSCoreBridge给Web发送的结果数据通过JSCPluginResult对象进行封装，可以封装成字符串，数组，Cordova特定的格式等多种数据格式进行发送。  
 
@@ -322,11 +330,11 @@ JSCoreBridge给Web发送的结果数据通过JSCPluginResult对象进行封装�
 
 * **`keepCallback`**  
 
-> 是否需要继续回调。默认为NO，同一个callbackId只能发送一次结果数据，设为YES，则支持多次回调。  
+> 是否需要继续回调。默认为NO，同一个`callbackId`只能发送一次结果数据，设为YES，则支持多次回调。比如写一个监听客户端某个按钮的点击事件的插件方法，用户点击按钮一次，给Web发送一次结果消息，此种场景就需要将`keepCallback`设置为YES。 
 
 
 
-
+<br />
 ### <a name="JSCInvokedPluginCommand">JSCInvokedPluginCommand：</a>
 JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参数进行封装，其属性包含如下成员：   
 
@@ -339,9 +347,9 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 分别为回调的callbackId标识，插件类名，插件方法名，Web传给客户端的参数，JSCoreBridge正是通过这些属性来完成Web交给Native的任务。  
 
 
-
+<br />
 ### 其他框架类：  
-对于框架其他的类，默认为私有状态，建议开发者不要随意调用，或者随意修改，在使用框架的过程中如遇任何问题欢迎及时[联系本人](#ContactInfo)商讨解决。  
+对于框架其他的类，默认为私有状态，建议开发者不要随意调用，或者随意修改，在使用框架的过程中如遇任何问题和bug欢迎[联系本人](#ContactInfo)沟通商讨解决。  
 
 
 
@@ -349,7 +357,7 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 -------------------------------------------------------------
 关于JSCoreBridge加载网页时，Web和Native对应回调方法的执行顺序，这里需要特别说明下：  
 
-* 如果`jsCoreBridge.js`在html页面直接引用，如下所示：  
+* **如果`jsCoreBridge.js`在html页面直接引用，如下所示：**  
 
 ```js
     <script type="text/javascript" src="jscorebridge.js"></script>
@@ -366,7 +374,7 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 > `JSCBridge`类中向Web添加的Web load的通知回调，`window.addEventListener("load", jscWindowOnLoad, false)`。  
 
 4. `jsCoreBridgeWebViewDidFinishLoad:`
-> `JSCWebViewController`类中回调方法，实为`WebView`的`webViewDidFinishLoad:`代理方法。  
+> [JSCWebViewController](#JSCWebViewController)类中回调方法，实为`WebView`的`webViewDidFinishLoad:`代理方法。  
 
 5. `jsCoreBridgeWillReady:`
 > JSCoreBridge即将准备就绪时的回调  
@@ -378,8 +386,8 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 > JSCoreBridge准备就绪之后的回调   
 
 
-
-* 如果`jsCoreBridge.js`是在别的JS通过appendChild的方式加入，如下所示：  
+<br />
+* ** 如果`jsCoreBridge.js`是在别的JS通过appendChild的方式加入，如下所示：**   
 
 ```js
     var script = document.createElement('script');
@@ -408,19 +416,19 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 
 :warning: 风险声明
 -------------------------------------------------------------
-* JSCoreBridge框架使用开源类`UIWebView+TS_JavaScriptContext`，JSCoreBridge修改后的类为`UIWebView+JSCJavaScriptContext`，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，还敬请勿用本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
+* JSCoreBridge框架使用开源类[UIWebView+TS_JavaScriptContext](https://github.com/TomSwift/UIWebView-TS_JavaScriptContext)，JSCoreBridge修改后的类为`UIWebView+JSCJavaScriptContext`，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
 
-* 本框架虽然已进行各多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，那么该风险您需要自行承担。欢迎您给本人反馈在使用中遇到的问题和bug。  
+* 本框架虽然已进行各多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，那么该风险您需要自行承担。同事也欢迎您给本人反馈在使用中遇到的问题和bug。  
 
 
 开源说明
 =============================================================
-本框架是本人在深入了解[Apache Cordova](http://cordova.apache.org/)后在此基础上修改出来的，本着开源的思想，现上传至GitHub，并提供CocoaPods支持，之后会一直跟进更新，如果您在使用本框架，欢迎及时反馈您在使用过程中遇到的各种问题和bug，也欢迎大家跟本人沟通和分享更多互联网技术。  
+本框架是本人在深入了解[Apache Cordova](http://cordova.apache.org/)后在此基础上修改封装的，本着开源的思想，现上传至[GitHub](https://github.com/iPhuan/JSCoreBridge.git)，并提供CocoaPods支持，之后会一直跟进更新，如果您在使用本框架，欢迎及时反馈您在使用过程中遇到的各种问题和bug，也欢迎大家跟本人沟通和分享更多互联网技术。更多开源资源将会不定期的更新至[iPhuanOpenSource](https://github.com/iPhuan/iPhuanOpenSource.git)  
 
 
 <a name="ContactInfo">如何联系我</a>
 =============================================================
-邮箱：iphuan@qq.com
+邮箱：iphuan@qq.com  
 QQ：519310392 （添加QQ时请备注JSCoreBridge）
 
 

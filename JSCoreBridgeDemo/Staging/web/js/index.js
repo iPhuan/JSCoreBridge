@@ -21,7 +21,7 @@ var app = {
 
         var params = {title: 'JSCoreBridge Demo'};
         // 兼容cordova用法; 成功和失败函数可传空
-        // 如果你希望在js加载后立即调用插件，请确保调用插件是在deviceready后执行，不要企望客户端对应插件方法会在jsCoreBridgeDidReady之前调用
+        // 如果你希望在js加载后立即调用插件，请确保调用插件是在deviceready后执行，不要企望客户端对应插件方法会在jsCoreBridgeDidReady之前调用，jsCoreBridge.exec为异步操作，除非你使用jsCoreBridge.execSync方法
         cordova.exec(null, null, 'JSCTestPlugin', 'changeNavTitle', [params]);
     },
 
