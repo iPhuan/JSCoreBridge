@@ -406,7 +406,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 * 插件无法调用时返回错误信息字典:  
 
 ```objective-c
-    @{@"resCode": @"4002", @"resMsg": ERROR: Plugin 'PluginName' can not be called, it is not allowed.}
+    @{@"resCode": @"4002", @"resMsg": @"ERROR: Plugin 'PluginName' can not be called, it is not allowed."}
 ```  
 
 < 出现此种情况原因在于插件方法`canCallPlugin`的返回值为NO。  
@@ -415,7 +415,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 * 插件方法无法找到时返回错误信息字典:  
 
 ```objective-c
-    @{@"resCode": @"4003", @"resMsg": @"ERROR: Method 'MethodName' not defined in Plugin '%@'."}
+    @{@"resCode": @"4003", @"resMsg": @"ERROR: Method 'MethodName' not defined in Plugin 'PluginName'."}
 ```  
 
 < 出现此种情况原因可能是Web传错了插件方法名，或者客户端并没有对应的插件方法。  
@@ -438,7 +438,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 ```    
 
 
-在返回成功和失败结果数据结果时建议开发者通过code和message的形式给Web返回结果信息，以便Web开发者能够通过code和message识别当前情况或者问题所在。
+在返回成功和失败结果数据时建议开发者通过code和message的形式给Web返回结果信息，以便Web开发者能够通过code和message识别当前情况或者问题所在。
 
 
 
