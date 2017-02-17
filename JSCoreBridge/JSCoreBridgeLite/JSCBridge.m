@@ -178,12 +178,12 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
 
 // If 'jsCoreBridge.js' is a direct reference, The execution order is as follows:
 
-// 'window.onload' --> 'jscWindowOnLoad' --> 'webViewDidFinishLoad:' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
+// 'window.onload' --> 'load' --> 'webViewDidFinishLoad:'('jsCoreBridgeWebViewDidFinishLoad:') --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
 /*------------------------------------------------------------------------------------------------------*/
 
 // If 'jsCoreBridge.js' append to document by 'appendChild' or 'insertBefore' JS method, The execution order is as follows:
 
-// 'webViewDidFinishLoad:' --> 'window.onload' --> 'jscWindowOnLoad' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
+// 'webViewDidFinishLoad:' --> 'window.onload' --> 'load' --> 'jsCoreBridgeWillReady:' --> 'deviceready' --> 'jsCoreBridgeDidReady:'
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     JSCLog(@"WebView loaded");

@@ -454,27 +454,24 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 ```js
     <script type="text/javascript" src="jscorebridge.js"></script>
 ```  
-各个回调的执行顺序如下：  
+各个回调的执行顺序如下：   
 
-1. `jsCoreBridgeWebView:didCreateJavaScriptContext` 
-> `JSCBridge`类中JSContext创建后的回调方法。  
+1. `window.onload`  
+> 如果你在Web写了该方法，将在此刻执行。  
 
-2. `window.onload`  
-> 如果你在Web写了该方法。  
+2. `load`  
+> Web监听`Window` `load`事件通知的回调，如`window.addEventListener("load", jscWindowOnLoad, false)`。如果你在Web写了该方法，将在此刻执行。  
 
-3. `jscWindowOnLoad`  
-> `JSCBridge`类中向Web添加的Web load的通知回调，`window.addEventListener("load", jscWindowOnLoad, false)`。  
-
-4. `jsCoreBridgeWebViewDidFinishLoad:`
+3. `jsCoreBridgeWebViewDidFinishLoad:`
 > [JSCWebViewController](#JSCWebViewController)类中的回调方法，实为`WebView`的`webViewDidFinishLoad:`代理方法。  
 
-5. `jsCoreBridgeWillReady:`
+4. `jsCoreBridgeWillReady:`
 > [JSCWebViewController](#JSCWebViewController)类中JSCoreBridge即将准备就绪时的回调  
 
-6. `deviceready`
+5. `deviceready`
 > Web监听JSCoreBridge已准备就绪的通知回调
 
-7. `jsCoreBridgeDidReady:`
+6. `jsCoreBridgeDidReady:`
 > [JSCWebViewController](#JSCWebViewController)类中JSCoreBridge准备就绪之后的回调   
 
 
@@ -491,15 +488,16 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 
 各个回调的执行顺序如下：  
 
-1. `jsCoreBridgeWebView:didCreateJavaScriptContext` 
-2. `jsCoreBridgeWebViewDidFinishLoad:`
-3. `window.onload`  
-4. `jscWindowOnLoad`  
-5. `jsCoreBridgeWillReady:`
-6. `deviceready`
-7. `jsCoreBridgeDidReady:`  
+1. `jsCoreBridgeWebViewDidFinishLoad:`
+2. `window.onload`  
+3. `jscWindowOnLoad`（`load`）  
+4. `jsCoreBridgeWillReady:`
+5. `deviceready`
+6. `jsCoreBridgeDidReady:`  
 
-> 与第一种情况不同的是，当`jsCoreBridge.js`通过代码的方式加入后，`WebView`并不会等待`jsCoreBridge.js`加载完后再回调`webViewDidFinishLoad:`。JSCoreBridge在实现上没有选择在`jsCoreBridgeWebView:didCreateJavaScriptContext`时就发送`deviceready`通知而是选择了在`jscWindowOnLoad`中发送的原因有二：一是考虑到第二种执行情况，在`jsCoreBridgeWebView:didCreateJavaScriptContext`中`jsCoreBridge.js`并没有加载完毕，此时无法使用`jsCoreBridge`对象；二是，如果在`window.onload`中发送`deviceready`通知，那么对于Web开发人员来说他如果再写了`window.onload`方法，该方法将不再调用。  
+> 与第一种情况不同的是，当`jsCoreBridge.js`通过代码的方式加入后，`WebView`并不会等待`jsCoreBridge.js`加载完后再回调`webViewDidFinishLoad:`。  
+> 通过测试可以发现所有JS在`window.onload`或者`load`监听事件回调中就已经加载完毕，如果是第二种执行顺序，在实现上JSCoreBridge选择在`load`监听事件回调里发送`deviceready`通知。不选择`window.onload`的原因在于，如果客户端向`JSContext`中添加`window.onload`方法，那么对于Web开发人员来说他如果再写了`window.onload`方法，该方法将不再调用。  
+> 对于第一种执行顺序，JSCoreBridge是直接在`webViewDidFinishLoad:`代理方法中发送`deviceready`通知，因为此时`load`监听事件回调已完成，在`webViewDidFinishLoad:`直接可以获取到`jsCoreBridge.js`的`jsCoreBridge`对象。
 
 
 开发者可参考以上两种情况的执行顺序来决定自己在开发中如何在各个回调中处理相应事情。  
@@ -516,7 +514,7 @@ JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留�
 <br />
 :warning: <a name="5">风险声明</a>
 -------------------------------------------------------------
-* JSCoreBridge框架使用了开源类[UIWebView+TS_JavaScriptContext](https://github.com/TomSwift/UIWebView-TS_JavaScriptContext)，JSCoreBridge修改后的类为[UIWebView+JSCJavaScriptContext](https://github.com/iPhuan/JSCoreBridge/blob/master/JSCoreBridge/JSCoreBridgeLite/UIWebView%2BJSCJavaScriptContext.m)，该类中的`- (void)webView:(id)unused didCreateJavaScriptContext:(JSContext *)ctx forFrame:(id<JSCWebFrame>)frame`回调方法，使用了`parentFrame`协议方法，该方法可能会被认为是私有API而导致您的APP被苹果拒绝，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
+* JSCoreBridge框架通过KVC的方式`[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"]`，从webView当中获取`JSContext`，有涉嫌使用苹果私有API的嫌疑，虽然该方法在网上被大量应用而没有遭到苹果拒绝，但本人无法保证能够100%通过审核，如果您对该问题有所介意，请勿使本框架。当然JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间解决该风险。  
 
 * 本框架虽然已进行过多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，那么该风险需要您自行承担。同时也欢迎您给本人反馈在使用中遇到的问题和bug。  
 
