@@ -526,7 +526,7 @@ JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留�
 
 <a name="6">开源说明</a>
 -------------------------------------------------------------
-JSCoreBridge框架是本人在深入了解[Apache Cordova](http://cordova.apache.org/)后在此基础上修改封装的，本着开源的思想，现上传至[GitHub](https://github.com/iPhuan/JSCoreBridge.git)，并提供CocoaPods支持，之后会一直跟进更新，如果您在使用本框架，欢迎及时反馈您在使用过程中遇到的各种问题和bug，也欢迎大家跟本人沟通和分享更多互联网技术。iPhuan更多开源资源将会不定期的更新至 [iPhuanOpenSource](https://github.com/iPhuan/iPhuanOpenSource.git)  
+JSCoreBridge框架是本人在深入了解[Apache Cordova](http://cordova.apache.org/)后在它的基础上修改封装的，本着开源的思想，现上传至[GitHub](https://github.com/iPhuan/JSCoreBridge.git)，并提供CocoaPods支持，之后会一直跟进更新，如果您在使用本框架，欢迎及时反馈您在使用过程中遇到的各种问题和bug，也欢迎大家跟本人沟通和分享更多互联网技术。iPhuan更多开源资源将会不定期的更新至 [iPhuanOpenSource](https://github.com/iPhuan/iPhuanOpenSource.git)  
 
 <br />
 <a name="ContactInfo">如何联系我</a>
