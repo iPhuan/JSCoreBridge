@@ -22,7 +22,6 @@
 		E5C33B981E4DC74200736171 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C33B971E4DC74200736171 /* JavaScriptCore.framework */; };
 		E5C33B9A1E4DC78200736171 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C33B991E4DC78200736171 /* UIKit.framework */; };
 		E5C33B9C1E4DC7C700736171 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C33B9B1E4DC7C700736171 /* Foundation.framework */; };
-		E5DAD3EC1E57950400D4D061 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E5DAD3EB1E57950400D4D061 /* README.md */; };
 		E5DC97101E57315C00CF62AB /* JSCConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC97021E57315C00CF62AB /* JSCConfigParser.m */; };
 		E5DC97111E57315C00CF62AB /* JSCTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC97041E57315C00CF62AB /* JSCTimer.m */; };
 		E5DC97121E57315C00CF62AB /* JSCWhitelist.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC97061E57315C00CF62AB /* JSCWhitelist.m */; };
@@ -87,7 +86,6 @@
 		E5C33B971E4DC74200736171 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E5C33B991E4DC78200736171 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5C33B9B1E4DC7C700736171 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E5DAD3EB1E57950400D4D061 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		E5DC97011E57315C00CF62AB /* JSCConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCConfigParser.h; sourceTree = "<group>"; };
 		E5DC97021E57315C00CF62AB /* JSCConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCConfigParser.m; sourceTree = "<group>"; };
 		E5DC97031E57315C00CF62AB /* JSCTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCTimer.h; sourceTree = "<group>"; };
@@ -329,7 +327,6 @@
 		E5DCA2641E516316008A76F4 /* Staging */ = {
 			isa = PBXGroup;
 			children = (
-				E5DAD3EB1E57950400D4D061 /* README.md */,
 				E5DCA2651E516316008A76F4 /* config.xml */,
 				E5DCA26A1E51632E008A76F4 /* web */,
 			);
@@ -479,7 +476,6 @@
 				E5C33B361E4DC62500736171 /* ViewController.m in Sources */,
 				E50690D41E52F31E0043B55F /* JSCBasePlugin.m in Sources */,
 				E5DC97141E57315C00CF62AB /* JSCConfig.m in Sources */,
-				E5DAD3EC1E57950400D4D061 /* README.md in Sources */,
 				E5DCA2581E5162F3008A76F4 /* JSCPlugin.m in Sources */,
 				E5DCA25A1E5162F3008A76F4 /* JSCWebViewController.m in Sources */,
 				E5DC97151E57315C00CF62AB /* JSCManager.m in Sources */,
