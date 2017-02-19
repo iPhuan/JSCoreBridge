@@ -94,7 +94,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
     pod 'JSCCordova'
 ```  
 
-    或者  
+或者  
 
 ```ruby
     pod 'JSCCordova/JSCCordovaLite'
