@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E50690D41E52F31E0043B55F /* JSCBasePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E50690D31E52F31E0043B55F /* JSCBasePlugin.m */; };
+		E5206DD61E599F8100E3EE50 /* CDVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5206DD51E599F8100E3EE50 /* CDVViewController.m */; };
+		E5206DD91E59A14800E3EE50 /* CDVPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E5206DD81E59A14800E3EE50 /* CDVPlugin.m */; };
+		E5206DDC1E59A43C00E3EE50 /* CDVCommandDelegateImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E5206DDB1E59A43C00E3EE50 /* CDVCommandDelegateImpl.m */; };
+		E5206DDF1E59A5D200E3EE50 /* CDVPluginResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E5206DDE1E59A5D200E3EE50 /* CDVPluginResult.m */; };
+		E5206DE21E59B1F400E3EE50 /* CDVInvokedUrlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = E5206DE11E59B1F400E3EE50 /* CDVInvokedUrlCommand.m */; };
 		E56603211E50655D0048039A /* JSCTestWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E566031F1E50655D0048039A /* JSCTestWebViewController.m */; };
 		E56603221E50655D0048039A /* JSCTestWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56603201E50655D0048039A /* JSCTestWebViewController.xib */; };
 		E56603261E50663B0048039A /* JSCTestPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E56603251E50663B0048039A /* JSCTestPlugin.m */; };
@@ -62,6 +67,16 @@
 		E50690D21E52F31E0043B55F /* JSCBasePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCBasePlugin.h; sourceTree = "<group>"; };
 		E50690D31E52F31E0043B55F /* JSCBasePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCBasePlugin.m; sourceTree = "<group>"; };
 		E50690D51E52F89A0043B55F /* JSCoreBridge-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JSCoreBridge-Prefix.pch"; sourceTree = "<group>"; };
+		E5206DD41E599F8100E3EE50 /* CDVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVViewController.h; sourceTree = "<group>"; };
+		E5206DD51E599F8100E3EE50 /* CDVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVViewController.m; sourceTree = "<group>"; };
+		E5206DD71E59A14800E3EE50 /* CDVPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVPlugin.h; sourceTree = "<group>"; };
+		E5206DD81E59A14800E3EE50 /* CDVPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVPlugin.m; sourceTree = "<group>"; };
+		E5206DDA1E59A43C00E3EE50 /* CDVCommandDelegateImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVCommandDelegateImpl.h; sourceTree = "<group>"; };
+		E5206DDB1E59A43C00E3EE50 /* CDVCommandDelegateImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVCommandDelegateImpl.m; sourceTree = "<group>"; };
+		E5206DDD1E59A5D200E3EE50 /* CDVPluginResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVPluginResult.h; sourceTree = "<group>"; };
+		E5206DDE1E59A5D200E3EE50 /* CDVPluginResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVPluginResult.m; sourceTree = "<group>"; };
+		E5206DE01E59B1F400E3EE50 /* CDVInvokedUrlCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVInvokedUrlCommand.h; sourceTree = "<group>"; };
+		E5206DE11E59B1F400E3EE50 /* CDVInvokedUrlCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVInvokedUrlCommand.m; sourceTree = "<group>"; };
 		E566031E1E50655D0048039A /* JSCTestWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCTestWebViewController.h; sourceTree = "<group>"; };
 		E566031F1E50655D0048039A /* JSCTestWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCTestWebViewController.m; sourceTree = "<group>"; };
 		E56603201E50655D0048039A /* JSCTestWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSCTestWebViewController.xib; sourceTree = "<group>"; };
@@ -152,6 +167,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5206DD31E599F4F00E3EE50 /* JSCCordova */ = {
+			isa = PBXGroup;
+			children = (
+				E5206DD71E59A14800E3EE50 /* CDVPlugin.h */,
+				E5206DD81E59A14800E3EE50 /* CDVPlugin.m */,
+				E5206DDD1E59A5D200E3EE50 /* CDVPluginResult.h */,
+				E5206DDE1E59A5D200E3EE50 /* CDVPluginResult.m */,
+				E5206DD41E599F8100E3EE50 /* CDVViewController.h */,
+				E5206DD51E599F8100E3EE50 /* CDVViewController.m */,
+				E5206DE01E59B1F400E3EE50 /* CDVInvokedUrlCommand.h */,
+				E5206DE11E59B1F400E3EE50 /* CDVInvokedUrlCommand.m */,
+				E5206DDA1E59A43C00E3EE50 /* CDVCommandDelegateImpl.h */,
+				E5206DDB1E59A43C00E3EE50 /* CDVCommandDelegateImpl.m */,
+			);
+			path = JSCCordova;
+			sourceTree = SOURCE_ROOT;
+		};
 		E566031D1E50651C0048039A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				E5DCA2641E516316008A76F4 /* Staging */,
+				E5206DD31E599F4F00E3EE50 /* JSCCordova */,
 				E5DCA22A1E5162F3008A76F4 /* JSCoreBridge */,
 				E5C33B311E4DC62500736171 /* AppDelegate.h */,
 				E5C33B321E4DC62500736171 /* AppDelegate.m */,
@@ -476,7 +509,9 @@
 				E5C33B361E4DC62500736171 /* ViewController.m in Sources */,
 				E50690D41E52F31E0043B55F /* JSCBasePlugin.m in Sources */,
 				E5DC97141E57315C00CF62AB /* JSCConfig.m in Sources */,
+				E5206DDC1E59A43C00E3EE50 /* CDVCommandDelegateImpl.m in Sources */,
 				E5DCA2581E5162F3008A76F4 /* JSCPlugin.m in Sources */,
+				E5206DD61E599F8100E3EE50 /* CDVViewController.m in Sources */,
 				E5DCA25A1E5162F3008A76F4 /* JSCWebViewController.m in Sources */,
 				E5DC97151E57315C00CF62AB /* JSCManager.m in Sources */,
 				E5DC97101E57315C00CF62AB /* JSCConfigParser.m in Sources */,
@@ -486,6 +521,7 @@
 				E5DCA2561E5162F3008A76F4 /* JSCInvokedPluginCommand.m in Sources */,
 				E5DCA2551E5162F3008A76F4 /* JSCBridgeDelegateImpl.m in Sources */,
 				E5DC97161E57315C00CF62AB /* JSCPrint.m in Sources */,
+				E5206DD91E59A14800E3EE50 /* CDVPlugin.m in Sources */,
 				E5C33B331E4DC62500736171 /* AppDelegate.m in Sources */,
 				E5DC97131E57315C00CF62AB /* NSDictionary+JSCPreferences.m in Sources */,
 				E5DCA2571E5162F3008A76F4 /* JSCObjcMsgSend.m in Sources */,
@@ -493,6 +529,8 @@
 				E5DCA2541E5162F3008A76F4 /* JSCBridge.m in Sources */,
 				E56603261E50663B0048039A /* JSCTestPlugin.m in Sources */,
 				E5C33B301E4DC62500736171 /* main.m in Sources */,
+				E5206DDF1E59A5D200E3EE50 /* CDVPluginResult.m in Sources */,
+				E5206DE21E59B1F400E3EE50 /* CDVInvokedUrlCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

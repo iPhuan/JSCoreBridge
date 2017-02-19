@@ -33,55 +33,55 @@
 
 #pragma mark - For asynchronous plugin method
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status{
     return [[self alloc] initWithStatus:status message:nil];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsString:(NSString*)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsString:(NSString*)message{
     return [[self alloc] initWithStatus:status message:message];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsArray:(NSArray*)messages{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsArray:(NSArray*)messages{
     return [[self alloc] initWithStatus:status message:messages];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsInt:(int)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsInt:(int)message{
     return [[self alloc] initWithStatus:status message:@(message)];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsInteger:(NSInteger)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsInteger:(NSInteger)message{
     return [[self alloc] initWithStatus:status message:@(message)];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsUnsignedInteger:(NSUInteger)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsUnsignedInteger:(NSUInteger)message{
     return [[self alloc] initWithStatus:status message:@(message)];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsDouble:(double)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsDouble:(double)message{
     return [[self alloc] initWithStatus:status message:@(message)];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsBool:(BOOL)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsBool:(BOOL)message{
     return [[self alloc] initWithStatus:status message:@(message)];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsDictionary:(NSDictionary*)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsDictionary:(NSDictionary*)message{
     return [[self alloc] initWithStatus:status message:message];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsArrayBuffer:(NSData*)message{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsArrayBuffer:(NSData*)message{
     return [[self alloc] initWithStatus:status message:p_messageFromArrayBuffer(message)];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsMultipart:(NSArray*)messages{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsMultipart:(NSArray*)messages{
     return [[self alloc] initWithStatus:status message:p_messageFromMultipart(messages)];
 }
 
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageToErrorObject:(int)errorCode{
++ (JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageToErrorObject:(int)errorCode{
     return [[self alloc] initWithStatus:status message:[self messageToErrorObject:errorCode]];
 }
 
-- (JSCPluginResult*)initWithStatus:(JSCCommandStatus)status message:(id)message{
+- (JSCPluginResult *)initWithStatus:(JSCCommandStatus)status message:(id)message{
     self = [super init];
     if (self) {
         _status = status;

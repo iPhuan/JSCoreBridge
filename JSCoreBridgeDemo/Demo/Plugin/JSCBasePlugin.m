@@ -18,7 +18,7 @@
 @implementation JSCBasePlugin
 
 // 可以控制统一入口
-- (BOOL)canCallPlugin{
+- (BOOL)canCallPlugin{    
     return YES;
 }
 

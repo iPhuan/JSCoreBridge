@@ -9,7 +9,9 @@
 
 #define __JSCOREBRIDGE_IOS__
 
+/* Version of JSCoreBridge */
 #define __JSCOREBRIDGE_0_1_0 100
+#define __JSCOREBRIDGE_0_1_1 101
 /* coho:next-version,insert-before */
 #define __JSCOREBRIDGE_NA 99999      /* not available */
 
@@ -18,7 +20,7 @@
 (X / 10000), (X % 10000) / 100, (X % 10000) % 100]
 
 /* Current version of JSCoreBridge */
-#define JSCOREBRIDGE_CURRENT_VERSION  __JSCOREBRIDGE_0_1_0
+#define JSCOREBRIDGE_CURRENT_VERSION  __JSCOREBRIDGE_0_1_1
 #define JSC_VERSION  JSC_DECIMAL_VERSION(JSCOREBRIDGE_CURRENT_VERSION)
 
 

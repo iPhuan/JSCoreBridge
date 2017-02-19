@@ -36,18 +36,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 // For asynchronous plugin method
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsString:(NSString*)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsArray:(NSArray*)messages;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsInt:(int)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsInteger:(NSInteger)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsUnsignedInteger:(NSUInteger)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsDouble:(double)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsBool:(BOOL)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsDictionary:(NSDictionary*)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsArrayBuffer:(NSData*)message;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageAsMultipart:(NSArray*)messages;
-+ (JSCPluginResult*)resultWithStatus:(JSCCommandStatus)status messageToErrorObject:(int)errorCode;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsString:(NSString*)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsArray:(NSArray*)messages;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsInt:(int)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsInteger:(NSInteger)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsUnsignedInteger:(NSUInteger)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsDouble:(double)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsBool:(BOOL)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsDictionary:(NSDictionary*)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsArrayBuffer:(NSData*)message;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageAsMultipart:(NSArray*)messages;
++ (__kindof JSCPluginResult *)resultWithStatus:(JSCCommandStatus)status messageToErrorObject:(int)errorCode;
 
 
 // For synchronous plugin method

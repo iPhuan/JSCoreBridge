@@ -15,7 +15,7 @@
 @interface JSCConfig ()
 @property (nonatomic, strong) JSCWhitelist* allowIntentsWhitelist;
 @property (nonatomic, strong) JSCWhitelist* allowNavigationsWhitelist;
-@property (nonatomic, readwrite, strong) NSDictionary *settings;
+@property (nonatomic, strong) NSDictionary *settings;
 @property (nonatomic, readwrite, strong) NSArray *startupPluginNames;
 @property (nonatomic, readwrite, strong) NSDictionary *pluginsMap;
 @property (nonatomic, copy) NSString *configFilePath;

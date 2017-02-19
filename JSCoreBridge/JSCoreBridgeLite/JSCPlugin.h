@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "JSCWebViewController.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSCPlugin : NSObject

@@ -36,6 +36,8 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 * [风险声明](#5)
 * [开源说明](#6)
 * [如何联系我](#ContactInfo)  
+* [如何联系我](#UpdateInfo)  
+
 
 <br />
 <br />
@@ -84,9 +86,22 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 
 ```ruby
     pod 'JSCoreBridge/JSCoreBridgeLite'
-```
+```  
 
-注：Lite版的JSCoreBridge将不使用`config.xml`进行功能选项配置，JSCoreBridgeLite仅仅实现了最基本的通信。
+> * 如果你想使用更兼容Cordova用法的JSCoreBridge可以添加以下命令行到Podfile：  
+
+```ruby
+    pod 'JSCCordova'
+```  
+
+或者  
+
+```ruby
+    pod 'JSCCordova/JSCCordovaLite'
+```  
+
+
+注：Lite版的JSCoreBridge将不使用`config.xml`进行功能选项配置，JSCoreBridgeLite仅仅实现了最基本的通信；如果你准备使用JSCCordova，更多详细说明请参考[Cordova用法兼容性](#4.4)。
   
 
 <br />
@@ -508,7 +523,8 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留了其原始的使用方法：  
 
 * 在Web平台，依然可以通过`cordova.exec(successFuction, failFuntion, 'pluginName', 'methodName', [params])`方式调用，同时新增jsCoreBridge对象调用的方式，新增`jsCoreBridge.execSync`同步方法。  
-* 在Native平台，`config.xml`配置方式与Cordova的一致，只是删减了部分配置选项；Plugin插件方法的编写也保持与Cordova一致，新增同步插件方法，唯一的区别在于各个相关联的类名都对应修改成JSCoreBridge框架的类，并在实现上可能稍做修改。
+* 在Native平台，`config.xml`配置方式与Cordova的一致，只是删减了部分配置选项；Plugin插件方法的编写也保持与Cordova一致，新增同步插件方法，唯一的区别在于各个相关联的类名都对应修改成JSCoreBridge框架的类，并在实现上可能稍做修改。  
+* 如果你想使用更兼容Cordova用法的JSCoreBridge，可以使用0.1.1版本中新增的JSCCordova。JSCCordova并不包含在JSCoreBridge Pod库中，需单独Pod `JSCCordova`库。JSCCordova的用意在于最大化的去兼容Cordova的用法，如果开发者已经在使用Cordova，在将Cordova替换为JSCoreBridge时又不想修改太多源代码，JSCCordova此时就发挥了其异常大的作用。当然，需要说明的一点是，使用JSCCordova并不一定能保证你的代码完全不用不修改，由于JSCoreBridge在实现上的差异，开发者在使用Cordova API的差异，以及本身JSCCordova也并没有完全兼容Cordova所有接口等这些原因，开发者在引入JSCCordova时，可能会出现相应的报错，但是，开发者解决这些报错也并不是一件难事。
 
 
 <br />
@@ -538,6 +554,28 @@ QQ：519310392
 > 添加QQ时请备注JSCoreBridge
 
 
+<br />
+<br />
+<br />
+<a name="UpdateInfo">版本更新</a>
+=============================================================  
+br />  
+
+### [V0.1.0](https://github.com/iPhuan/JSCoreBridge/tree/0.1.0)
+更新日期：2017年2月18日  
+更新说明：  
+> * 发布JSCoreBridge第一个版本。  
+
+-------------------------------------------------------------  
+
+### [V0.1.1](https://github.com/iPhuan/JSCoreBridge/tree/0.1.1)
+更新日期：2017年2月19日  
+更新说明：  
+> * 新增JSCCordova，JSCCordova能帮助JSCoreBridge更兼容Cordova用法。  
+
+文档相应介绍：[点击查看]（#4.4）  
+
+------------------------------------------------------------- 
 
 
 
