@@ -36,7 +36,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 * [风险声明](#5)
 * [开源说明](#6)
 * [如何联系我](#ContactInfo)  
-* [如何联系我](#UpdateInfo)  
+* [版本更新记录](#UpdateInfo)  
 
 
 <br />
@@ -557,7 +557,7 @@ QQ：519310392
 <br />
 <br />
 <br />
-<a name="UpdateInfo">版本更新</a>
+<a name="UpdateInfo">版本更新记录</a>
 =============================================================  
 br />  
 
