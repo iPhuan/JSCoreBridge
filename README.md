@@ -73,6 +73,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 4. JSCoreBridge执行完插件方法后如需给Web返回数据结果，直接调用`jsCoreBridge.js`的`nativeCallback`方法，通过`JSCInvokedPluginCommand`的`callbackId`作为标识将结果发送给Web对应的回调。
 
 <br />
+
 <a name="3">如何获取JSCoreBridge</a>   
 -------------------------------------------------------------
 1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)   
@@ -107,6 +108,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
   
 
 <br />
+
 <a name="4">使用说明</a>   
 =============================================================
 JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添加，加入JSCoreBridge后，简单配置config.xml和jsCoreBridge.js即可使用，如框架为手动添加，需添加`JavaScriptCore.framework`库。  
@@ -116,6 +118,7 @@ JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添�
 [JSCoreBridge Demo](https://github.com/iPhuan/JSCoreBridge.git)中有JSCoreBridge的详细使用样例代码，可下载参考。
 
 <br />
+
 <a name="4.1">JSCoreBridge Web平台</a>  
 -------------------------------------------------------------
 
@@ -200,6 +203,7 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 
 
 <br />  
+
 <a name="4.2">JSCoreBridge Native平台</a>  
 -------------------------------------------------------------
 <a name="4.2.1"></a>  
@@ -465,6 +469,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 
 
 <br />
+
 <a name="WebLoadOrder">网页加载回调执行顺序说明</a>
 -------------------------------------------------------------
 关于JSCoreBridge加载网页时，Web和Native对应回调方法的执行顺序，这里需要特别说明下：  
@@ -523,6 +528,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 开发者可参考以上两种情况的执行顺序来决定自己在开发中如何在各个回调中处理相应事情。  
 
 <br />
+
 <a name="4.4">Cordova用法兼容性</a>
 -------------------------------------------------------------
 JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留了其原始的使用方法：  
@@ -533,6 +539,7 @@ JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留�
 
 
 <br />
+
 :warning: <a name="5">风险声明</a>
 -------------------------------------------------------------  
 * JSCoreBridge框架通过KVC的方式`[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"]`，从webView当中获取`JSContext`，有涉嫌使用苹果私有API的嫌疑，虽然该方法在网上被大量应用而没有遭到苹果拒绝，但本人无法保证能够100%通过审核，如果您对该问题有所介意，请评估风险后再使用。    
@@ -543,6 +550,7 @@ JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留�
 
 
 <br />
+
 =============================================================  
 
 <a name="6">开源说明</a>
@@ -551,6 +559,7 @@ JSCoreBridge框架是本人在深入了解[Apache Cordova](http://cordova.apache
 
 
 <br />
+
 <a name="ContactInfo">如何联系我</a>
 -------------------------------------------------------------  
 邮箱：iphuan@qq.com  
@@ -562,6 +571,7 @@ QQ：519310392
 <br />
 <br />
 <br />
+
 <a name="UpdateInfo">版本更新记录</a>
 =============================================================  
 
