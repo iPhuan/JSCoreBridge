@@ -455,8 +455,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
     #define JSC_RESMSG_METHOD_NOT_DEFINED  @"ERROR: Method not defined in Plugin."  
 ```    
 
-:warning: 注意：  
-需要在pch文件中引入定义了以上宏的头文件，才能保证宏定义生效。
+:warning: 注意：需要在pch文件中引入定义了以上宏的头文件，才能保证宏定义生效。
 
 在返回成功和失败结果数据时建议开发者通过code和message的形式给Web返回结果信息，以便Web开发者能够通过code和message识别当前情况或者问题所在。
 
