@@ -63,6 +63,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 5. Cordova执行完插件方法后如需给Web返回数据结果，则再次通过WebView`stringByEvaluatingJavaScriptFromString:`方法执行Cordova JS方法`nativeCallback`，通过`CDVInvokedUrlCommand`的`callbackId`作为标识将结果发送给Web对应的回调。
 
 <br />   
+
 ### <a name="2.2">JSCoreBridge通信原理：</a>  
 
 不再使用传统的scheme链接跳转截取和`stringByEvaluatingJavaScriptFromString:`执行JS的方法，通过iOS7新增的**`JavaScriptCore.framework`**来实现JS和Native之间的通信。
@@ -131,6 +132,7 @@ JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添�
 > jsCoreBridge.js的使用原则在于，保证你的html文件能够引用到。
 
 <br />  
+
 ### <a name="4.1.2">jsCoreBridge.js接口说明：</a> 
 
 jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova-ios/blob/master/CordovaLib/cordova.js)，通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：  
@@ -249,6 +251,7 @@ JSCoreBridge在未使用`config.xml`的状况下，其仅仅满足Web与Native�
 
 
 <br />  
+
 ### <a name="JSCWebViewController">JSCWebViewController：</a>  
 JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewController，可以直接使用，也可根据自己的需求来继承使用，其部分API说明如下：  
 
@@ -293,6 +296,7 @@ JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewControll
 
 
 <br />
+
 ### <a name="JSCBridgeDelegate">JSCBridgeDelegate：</a>  
 JSCBridgeDelegate是`JSCoreBridge`类的代理，可通过该代理向Web发送结果数据，执行JS等。该代理作为[JSCWebViewController](#JSCWebViewController)和[JSCPlugin](#JSCPlugin)的属性来使用。
 
@@ -345,6 +349,7 @@ JSCBridgeDelegate是`JSCoreBridge`类的代理，可通过该代理向Web发送�
 
 
 <br />
+
 ### <a name="JSCPlugin">JSCPlugin：</a>
 JSCPlugin即为我们刚刚一直说的插件，这是一个基类，开发者需根据需求来分类建立多个插件，而这些插件都应当要继承于JSCPlugin来使用。  
 JSCPlugin插件方法的声明示例如下：  
@@ -383,6 +388,7 @@ JSCPlugin的部分API说明如下：
 
 
 <br />
+
 ### <a name="JSCPluginResult">JSCPluginResult：</a>
 JSCoreBridge给Web发送的结果数据通过JSCPluginResult对象进行封装，以字符串，数组，Cordova特定的格式等多种数据格式进行发送。  
 
@@ -399,6 +405,7 @@ JSCoreBridge给Web发送的结果数据通过JSCPluginResult对象进行封装�
 
 
 <br />
+
 ### <a name="JSCInvokedPluginCommand">JSCInvokedPluginCommand：</a>
 JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参数进行封装，其属性包含如下成员：   
 
@@ -412,11 +419,13 @@ JSCoreBridge通过JSCInvokedPluginCommand对象将Web发送给Native的命令参
 
 
 <br />
+
 ### <a name="4.2.7">其他框架类：</a>
 对于框架其他的类，默认为私有状态，建议开发者不要随意调用，或者随意修改，在使用框架的过程中如遇任何问题和bug欢迎[联系本人](#ContactInfo)沟通商讨解决。 
 
 
 <br />
+
 ### <a name="4.2.8">自定义错误信息：</a>
 JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web返回对应的code码和错误信息：  
 
@@ -447,6 +456,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 > 出现此种情况原因可能是Web传错了插件方法名，或者客户端并没有对应的插件方法。  
 
 <br />
+
 开发者可以通过定义以下宏来自定义JSCoreBridge给Web返回的错误信息的Key和Value值，代码示例：  
 
 
@@ -501,6 +511,7 @@ JSCoreBridge在以下三种情况下默认会以key `resCode`和`resMsg`给Web�
 
 
 <br />
+
 * **如果`jsCoreBridge.js`是在别的JS通过appendChild的方式加入，如下所示：**   
 
 ```js
