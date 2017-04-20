@@ -292,7 +292,7 @@ JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewControll
 > JSCoreBridge将要准备就绪和已准备就绪回调。分别在`deviceready`通知回调执行之前和之后调用，方便开发者在这两个时刻进行相应操作，可在[JSCWebViewController](#JSCWebViewController)子类中重写该方法使用。  
 
 
-:warning: *特别提示：*关于客户端Native及Web的相应回调方法的执行顺序请参考[网页加载回调执行顺序说明](#WebLoadOrder)。  
+:warning: **特别提示：关于客户端Native及Web的相应回调方法的执行顺序请参考[网页加载回调执行顺序说明](#WebLoadOrder)。**  
 
 
 <br />
