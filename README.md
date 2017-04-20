@@ -50,8 +50,9 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 > JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手。  
 
 <br />
-<a name="2">通信原理</a>
+<a name="2">通信原理</a>  
 -------------------------------------------------------------
+
 ### <a name="2.1">Cordova通信原理：</a>
 
 1. Web创建自定义scheme “`gap://ready`”，并响应链接跳转事件；
@@ -60,7 +61,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 4. Cordova根据`CDVInvokedUrlCommand`对象的`className`和`methodName`属性找到对应插件和对应的插件方法，并执行插件方法；
 5. Cordova执行完插件方法后如需给Web返回数据结果，则再次通过WebView`stringByEvaluatingJavaScriptFromString:`方法执行Cordova JS方法`nativeCallback`，通过`CDVInvokedUrlCommand`的`callbackId`作为标识将结果发送给Web对应的回调。
 
-<br />
+<br />   
 ### <a name="2.2">JSCoreBridge通信原理：</a>  
 
 不再使用传统的scheme链接跳转截取和`stringByEvaluatingJavaScriptFromString:`执行JS的方法，通过iOS7新增的**`JavaScriptCore.framework`**来实现JS和Native之间的通信。
@@ -71,9 +72,9 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 4. JSCoreBridge执行完插件方法后如需给Web返回数据结果，直接调用`jsCoreBridge.js`的`nativeCallback`方法，通过`JSCInvokedPluginCommand`的`callbackId`作为标识将结果发送给Web对应的回调。
 
 <br />
-<a name="3">如何获取JSCoreBridge</a>  
+<a name="3">如何获取JSCoreBridge</a>   
 -------------------------------------------------------------
-1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)
+1. 直接在GitHub上[获取](https://github.com/iPhuan/JSCoreBridge.git)   
 2. 通过[CocoaPods](http://guides.cocoapods.org/using/using-cocoapods.html)添加到工程：  
 
 > * 如果你想使用完整版的JSCoreBridge，添加以下命令行到Podfile：  
@@ -105,7 +106,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
   
 
 <br />
-<a name="4">使用说明</a>  
+<a name="4">使用说明</a>   
 =============================================================
 JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添加，加入JSCoreBridge后，简单配置config.xml和jsCoreBridge.js即可使用，如框架为手动添加，需添加`JavaScriptCore.framework`库。  
 
@@ -116,6 +117,7 @@ JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添�
 <br />
 <a name="4.1">JSCoreBridge Web平台</a>  
 -------------------------------------------------------------
+
 ### <a name="4.1.1">jsCoreBridge.js存放说明：</a> 
 
 * jsCoreBridge.js本身在工程当中，如打开的html文件在bundle中，可直接引用，当然如果你的html文件在bundle的子目录下，你希望`jsCoreBridge.js`和你的网页目录在同一级，你也可以将`jsCoreBridge.js`拷贝到该同级目录；
@@ -124,7 +126,7 @@ JSCoreBridge框架可通过CocoaPods Pod到工程，也可手动下载源码添�
 
 > jsCoreBridge.js的使用原则在于，保证你的html文件能够引用到。
 
-<br />
+<br />  
 ### <a name="4.1.2">jsCoreBridge.js接口说明：</a> 
 
 jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova-ios/blob/master/CordovaLib/cordova.js)，通过`jsCoreBridge`对象来调用，也兼容Cordova用法，可以通过`cordova`对象调用，jsCoreBridge接口如下：  
@@ -196,10 +198,11 @@ jsCoreBridge.js对应于Cordova的[cordova.js](https://github.com/apache/cordova
 ```
 
 
-<br />
+<br />  
 <a name="4.2">JSCoreBridge Native平台</a>  
 -------------------------------------------------------------
 <a name="4.2.1"></a>  
+
 ### [config.xml：](http://cordova.apache.org/docs/en/latest/config_ref/index.html)  
 
 在Cordova中config.xml是框架功能选项的配置文件，包含工程的一些信息，插件白名单，Web URL白名单，WebView属性设置等。同样在JSCoreBridge中，我们将`config.xml`移植了过来，并对一些配置选项进行了删减，以便达到一个轻量级的JSCoreBridge框架。  
@@ -240,8 +243,8 @@ JSCoreBridge在未使用`config.xml`的状况下，其仅仅满足Web与Native�
 
 
 
-<br />
-### <a name="JSCWebViewController">JSCWebViewController：</a> 
+<br />  
+### <a name="JSCWebViewController">JSCWebViewController：</a>  
 JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewController，可以直接使用，也可根据自己的需求来继承使用，其部分API说明如下：  
 
 * **`bridgeDelegate`**   
@@ -285,7 +288,7 @@ JSCWebViewController是JSCoreBridge框架直接供开发者使用的ViewControll
 
 
 <br />
-### <a name="JSCBridgeDelegate">JSCBridgeDelegate：</a>
+### <a name="JSCBridgeDelegate">JSCBridgeDelegate：</a>  
 JSCBridgeDelegate是`JSCoreBridge`类的代理，可通过该代理向Web发送结果数据，执行JS等。该代理作为[JSCWebViewController](#JSCWebViewController)和[JSCPlugin](#JSCPlugin)的属性来使用。
 
 * **`- (void)registerPlugin:(JSCPlugin *)plugin withPluginName:(NSString *)pluginName`**  
