@@ -7,7 +7,7 @@
 //
 
 
-// 通过定义以下几个字段和值，来自定义JSCoreBridge的错误信息，JSCoreBridge在以下几种错误的情况下会以一个字典将code和message返回给Web
+// 通过在pch中提前定义以下几个字段和值，来自定义JSCoreBridge的错误信息，JSCoreBridge在以下几种错误的情况下会以一个字典将code和message返回给Web
 #define JSC_KEY_RESCODE @"errCode"
 #define JSC_KEY_RESMSG @"errMsg"
 
