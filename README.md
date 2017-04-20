@@ -530,8 +530,8 @@ JSCoreBridge基于Cordova修改，不管是Web平台还是Native平台都保留�
 
 <br />
 :warning: <a name="5">风险声明</a>
--------------------------------------------------------------
-* JSCoreBridge框架通过KVC的方式`[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"]`，从webView当中获取`JSContext`，有涉嫌使用苹果私有API的嫌疑，虽然该方法在网上被大量应用而没有遭到苹果拒绝，但本人无法保证能够100%通过审核，如果您对该问题有所介意，请评估风险后再使用。  
+-------------------------------------------------------------  
+* JSCoreBridge框架通过KVC的方式`[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"]`，从webView当中获取`JSContext`，有涉嫌使用苹果私有API的嫌疑，虽然该方法在网上被大量应用而没有遭到苹果拒绝，但本人无法保证能够100%通过审核，如果您对该问题有所介意，请评估风险后再使用。    
 > JSCoreBridge会一直跟进和更新，之后有更好的实现方法，会第一时间来屏蔽该风险。  
 
 * 本框架虽然已进行过多次自测，但是并未进行大范围的试用，避免不了会有未知的bug产生，如果您使用本框架，由于未知bug所导致的风险需要您自行承担。  
