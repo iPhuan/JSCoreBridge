@@ -49,6 +49,7 @@ JSCoreBridge是基于iOS平台[Apache Cordova](http://cordova.apache.org/)修改
 
 > JSCoreBridge是在Cordova的基础上进行修改的，它兼容大部分Cordova的用法，熟悉Cordova的开发者极易上手。  
 
+<br />
 
 <a name="2">通信原理</a>
 -------------------------------------------------------------
