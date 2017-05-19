@@ -27,6 +27,7 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
 @property (nonatomic, strong) NSMutableDictionary *pluginObjects;
 @property (nonatomic, strong) NSDictionary *pluginsMap;
 @property (nonatomic, strong) NSArray *supportedOrientations;
+@property (nonatomic, copy) NSString *jsContextKeyPath;
 
 
 @end
@@ -119,6 +120,15 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
     _pluginsMap = pluginsMap;
 }
 
+- (NSString *)jsContextKeyPath {
+    if (_jsContextKeyPath == nil) {
+        NSArray *Keys = @[[@"document" stringByAppendingString:@"View"], @"webView", [@"main" stringByAppendingString:@"Frame"], [@"javaScript" stringByAppendingString:@"Context"]];
+        
+        _jsContextKeyPath = [Keys componentsJoinedByString:@"."];
+    }
+    return _jsContextKeyPath;
+}
+
 
 #pragma mark - Orientations
 
@@ -188,7 +198,7 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     JSCLog(@"WebView loaded");
     
-    self.context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    self.context = [webView valueForKeyPath:self.jsContextKeyPath];
     
     
     if ([self p_fireDeviceReadyEvent]){
@@ -211,6 +221,7 @@ NSString *const kJSCExecuteCommandSyncMark = @"EXECSYNC";
     
     [_webViewController jsCoreBridgeWebViewDidFinishLoad:_webViewController.webView];
 }
+
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     [_webViewController jsCoreBridgeWebView:webView didFailLoadWithError:error];
